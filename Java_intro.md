@@ -223,10 +223,19 @@ package jp.ac.uryukyu.ie.tnal;
 public class CheckOdd {
     public static void main(String[] args) {
         int[] data = {1, 2, 3};
+        /*
         int i;
         for(i=0; i<data.length; i++){
             if( data[i] % 2 == 0 ){
                 System.out.println(data[i]);
+            }else{
+                System.out.println("奇数");
+            }
+        }
+        */
+        for(int i : data){
+            if( i % 2 == 0 ){
+                System.out.println(i);
             }else{
                 System.out.println("奇数");
             }
@@ -250,6 +259,8 @@ public class CheckOdd {
       - ``i++``は「i += 1」の意味。
       - 上記3点は省略することも可能。例えば ``for(;;){〜〜〜}`` と書くと「初期化無し、継続条件なし(=常に継続)、最初期化なし」でループブロックを実行するため、無限に反復処理し続けることになる。
         - **break; continue;** はpython同様に利用できる。
+  - ``for(int i : data){〜〜〜}```
+    - 配列の要素に対する処理はするが、特にインデックスを利用する必要がない場合の書き方。どちらかというとpythonのfor文（for i in data:）に近い書き方。
   - ``if (data[i] % 2 == 0){〜〜〜}``
     - ``data[i]`` は、配列内のデータへアクセスする例。（Pythonのリストへのアクセスとほぼ同じ）
     - if文の例。
