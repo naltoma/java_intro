@@ -65,6 +65,7 @@ match_num = 1, correct_rate = 0.33333334
 - 実行例2
 ```
 oct:tnal% javac -d . TypingGame.java
+oct:tnal% java jp/ac/uryukyu/ie/tnal/TypingGame
 answer = tes
 Type some string here:
 tstt
