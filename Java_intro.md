@@ -52,7 +52,7 @@
   - Java EE (Enterprise Edition): ウェブアプリケーション等
   - Java ME (Micro Edition): 組み込み等
 - JDKとIDEが必要
-  - 教科書には「IDEが必要」と書いてるが、実際には不要。IDEがあると便利、ぐらい。どう便利なのかは後日[[IntelliJ>https://www.jetbrains.com/idea/]]で演習します。
+  - 教科書には「IDEが必要」と書いてるが、実際には不要。IDEがあると便利、ぐらい。どう便利なのかは後日[IntelliJ](https://www.jetbrains.com/idea/)で演習します。
 
 <hr>
 
