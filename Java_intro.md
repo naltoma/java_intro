@@ -446,16 +446,16 @@ int main(){
 }
 ```
 
-- Java言語でのコード例:
--- 2つのファイルに分けて記述:
---- 新しい型（クラス）を定義したソース：[StudentScore.java](./StudentScore.java)
---- 上記クラスを使用する、main関数を含むソース: [OriginalClass.java](./OriginalClass.java)
--- コンパイル方法
---- 1. ``javac -d . StudentScore.java``（この時点でエラーが出たら、デバッグしよう）
---- 2. ``javac -d . OriginalClass.java``
--- 実行方法
---- 実行したいmainメソッドを記述しているクラスを指定する。
---- 當間の例: ``java jp.ac.uryukyu.ie.tnal.OriginalClass``
+- Java言語でのコード例
+  - 2つのファイルに分けて記述
+    - 新しい型（クラス）を定義したソース：[StudentScore.java](./StudentScore.java)
+    - 上記クラスを使用する、main関数を含むソース: [OriginalClass.java](./OriginalClass.java)
+  - コンパイル方法
+    - 1. ``javac -d . StudentScore.java``（この時点でエラーが出たら、デバッグしよう）
+    - 2. ``javac -d . OriginalClass.java``
+  - 実行方法
+    - 実行したいmainメソッドを記述しているクラスを指定する。
+    - 當間の例: ``java jp.ac.uryukyu.ie.tnal.OriginalClass``
 
 ```
 // 新しい型（クラス）を定義したソース：StudentScore.java
