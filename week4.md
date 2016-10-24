@@ -15,6 +15,17 @@
     - <a href="#c5-2">Inputクラスのメソッド（pp.111-）</a>
     - <a href="#c5-3">Stringクラスのメソッド（pp.122-）</a>
     - <a href="#c5-4">Integerクラスのメソッド（教科書に無し）</a>
+  - <a href="#c8">条件を書くための演算子（8章）</a>
+    - <a href="#c8-1">文字列の比較（pp.178-）</a>
+    - <a href="#c8-2">論理演算子（pp.181-）</a>
+    - <a href="#c8-3">条件演算子（pp.188-）</a>
+    - <a href="#c8-4">演算子一覧表（p.191）</a>
+  - <a href="#c9">while文（9章）</a>
+    - <a href="#c9-1">while文の例（pp.196-）</a>
+    - <a href="#c9-2">do-while文（pp.205-）</a>
+  - <a href="#c11">ジャンプによる制御（11章）</a>
+    - <a href="#c11-1">switch文（pp.244-）</a>
+    - <a href="#c11-2">switch文の規則（pp.249-）</a>
 
 <hr>
 
@@ -176,3 +187,102 @@ public class SampleScanner {
       - ``Double.parseDouble(String s)``
       - ``Boolean.parseBoolean(String s)``
   - String toString(): Stringに変換。
+
+<hr>
+
+## <a name="c8">条件を書くための演算子（8章）</a>
+### <a name="c8-1">文字列の比較（pp.178-）</a>
+- 「関係演算子==」は、String型（参照型）には **適用できない**。意味が異なる。
+  - 文字列がnullかどうか調べる場合だけ使える。
+    - ``object == null`` //objectがnullである（実体がない）時にtrue
+- 文字列そのもの値を比較するには、String.equals()メソッドを使う。
+
+```
+String str = "Java";
+boolean answer = str.equals("Java");
+```
+
+### <a name="c8-2">論理演算子（pp.181-）</a>
+- &&: 論理積
+- ||: 論理和
+- !: 否定
+
+### <a name="c8-3">条件演算子（pp.188-）</a>
+- 3項演算子の例。
+- 条件演算子
+  - 条件部がtrueかfalseかで違う値になる式を作る。簡単なif文なら1行で書いてしまった方が全体を俯瞰しやすくなる。（使うことを推奨するわけではない）
+  - 以下の例では「aの値が偶数ならnの値を100に、そうでないならnの値を0にする」。
+
+```
+int a = 5;
+int n = a%2==0 ? 100 : 0;
+```
+
+### <a name="c8-4">演算子一覧表（p.191）</a>
+省略。
+
+<hr>
+
+## <a name="c9">while文（9章）</a>
+### <a name="c9-1">while文の例（pp.196-）</a>
+- 条件を満足している間、ループ処理を実行し続ける。
+
+```
+int i = 0;
+while( i<3 ){
+    System.out.println(i);
+    i++;
+}
+```
+
+### <a name="c9-2">do-while文（pp.205-）</a>
+- 最初に処理を実行し、その後で条件を確認する。（最低1回は処理を実行する）
+
+```
+int i = 0;
+do {
+    System.out.println(i);
+    i++;
+} while( i<3 );
+```
+
+<hr>
+
+## <a name="c11">ジャンプによる制御（11章）</a>
+### <a name="c11-1">switch文（pp.244-）</a>
+- swich文は、非常に多くの分岐先がある時に有効な構文。if-else文でも同じ処理を書けるが、switch文の方が高速。
+
+```
+import java.util.Random;
+
+public class SampleSwitch {
+    public static void main(String[] args) {
+        Random rnd = new Random(); // Randomクラスのインスタンスを用意。
+        int num = rnd.nextInt(5); // 0〜4の乱数を返す。
+        switch (num) {
+            case 1:
+                System.out.println("numが1のときの処理");
+                break;
+            case 3:
+                System.out.println("numが1のときの処理");
+                break;
+            default:
+                System.out.println("case文のどれにも該当しなかった場合の処理");
+        }
+        System.out.println("switch()文終了。");
+    }
+}
+
+```
+
+- caseで指定された値と等しい箇所があれば、そこにジャンプする。
+  - ジャンプ先にbreakがあれば、そのブロックを抜ける。（ここではswitch文を抜ける）。
+  - **ジャンプ先にbreakがなければ、ブロックを抜けず、処理を継続する点に注意。**
+    - 例えば、num = 1時に、上記コードで「case 1」時にbreakがない場合、
+      - まず case 1 のコードを実行し、
+      - 続けて case 3 には該当しないため無視し、
+      - 最後に default にはどの値でも該当するため、defaultのコードも実行する。
+
+### <a name="c11-2">switch文の規則（pp.249-）</a>
+- switch() のカッコ内に記述できる変数の型は「整数型、文字列型、列挙型」のみ。
+  - caseにはリテラルだけが使用可能。変数や式は使えない。
