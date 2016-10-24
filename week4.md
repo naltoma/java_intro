@@ -160,6 +160,7 @@ public class SampleScanner {
   - String toLowerCase(): 英字を小文字にした文字列を返す。
   - String toUpperCase(): 英字を大文字にした文字列を返す。
   - String trim(): 先頭と末尾の空白を削除した文字列を返す。
+  - String[] split(String regex): 与えられた[正規表現regex](http://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#sum)に基づき、文字列を分解した配列を返す。
 
 ### <a name="c5-4">Integerクラスのメソッド（教科書に無し）</a>
 - APIドキュメントからIntegerクラスを探してみよう。
