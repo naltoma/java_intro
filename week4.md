@@ -114,6 +114,8 @@ System.out.println("こんにちは" + name + "さん");
 <hr>
 
 ## <a name="c5">基本ライブラリの利用（5章）</a>
+- APIドキュメント: [Java™ Platform, Standard Edition 8 API Specification](http://docs.oracle.com/javase/8/docs/api/)
+
 ### <a name="c5-1">Mathクラスのクラスメソッド（pp.104-）</a>
 - 平方根の計算
 ```
