@@ -264,7 +264,7 @@ public class SampleSwitch {
                 System.out.println("numが1のときの処理");
                 break;
             case 3:
-                System.out.println("numが1のときの処理");
+                System.out.println("numが3のときの処理");
                 break;
             default:
                 System.out.println("case文のどれにも該当しなかった場合の処理");
