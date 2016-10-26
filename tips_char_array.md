@@ -38,7 +38,7 @@ public class SampleCharArray {
     public static void main(String[] argc) {
         String target = "test string.";
         char[] copy = target.toCharArray();
-        char[] copy = new char[target.length()]; //教科書15章の例
+        //char[] copy = new char[target.length()]; //教科書15章の例
 
         int i, j;
         for(i=target.length()-1, j=0; i>=0; i--,j++){
