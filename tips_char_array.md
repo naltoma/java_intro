@@ -36,15 +36,15 @@
 ```
 public class SampleCharArray {
     public static void main(String[] argc) {
-        String target = "test string.";
-        char[] copy = target.toCharArray();
-        //char[] copy = new char[target.length()]; //教科書15章の例
-
+        String source = "test string.";
+        char[] target = source.toCharArray();
+        //char[] target = new char[source.length()];  //教科書15章の例
+        System.out.println(target);
         int i, j;
-        for(i=target.length()-1, j=0; i>=0; i--,j++){
-            copy[j] = target.charAt(i);
+        for(i=source.length()-1, j=0; i>=0; i--,j++){
+            target[j] = source.charAt(i);
         }
-        System.out.println(copy);
+        System.out.println(target);
     }
 }
 ```
