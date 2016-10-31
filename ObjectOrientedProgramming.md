@@ -13,10 +13,25 @@
     - 盤面情報を保存するフィールド変数 board と、手番管理用の変数 turn は **private に指定** している。
     - **board, turn を直接編集するメソッドは提供していない。実装を隠蔽している**（実装を気にせず利用できるように、機能をメソッドとして提供している）。
 - [Main.java](./TicTacToe/Main.java) // ゲームをプレイするmain()メソッドを含むクラス。
-- コンパイル＆実行方法
-  - ``javac -d . *.java``
-  - ``java jp/ac/uryukyu/tnal/Main``
-    - package名に注意。
+- プログラム等のダウンロード、コンパイル、実行手順
+
+```
+# リポジトリの複製（ダウンロード）
+git clone https://github.com/naltoma/java_intro.git
+cd java_intro/TicTacToe
+
+# コンパイル
+javac -d . *.java
+# 実行
+## package名を変更したら、実行時のパスが変わることに注意。
+## ここでは変更・修正せずにコンパイル・実行している。
+java jp/ac/uryukyu/tnal/Main
+
+# Javadocによるドキュメント生成
+javadoc -charset "UTF-8" -private -d apidoc *.java
+# ドキュメントをブラウザで参照する
+open apidoc apidoc/index.html
+```
 
 ### ドキュメント例
 - 上記コード TicTacToe.java, Main.java をダウンロードし、下記手順でAPIドキュメントを生成してみよう。
