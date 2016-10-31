@@ -1,22 +1,25 @@
 package jp.ac.uryukyu.ie.tnal;
 
 /**
- * 3目並べ（oxゲーム）
+ * 3目並べ（oxゲーム）の実装例（実装途中）。
  *
- * private char[][] board; ボードの状態。
- *   何置かれていない状態: 'e' (empty)
- *   oを置いた状態: 'o'
- *   xを置いた状態: 'x'
- *
- * private boolean turn; 手番管理用の変数。
- *   true: 'o'
- *   false: 'x'
+ * ボードを用意(初期化)し、o手順から置き始め、手順管理をするところまで実装。
  */
 public class TicTacToe {
+    /**
+     * 何置かれていない状態: 'e' (empty)
+     * oを置いた状態: 'o'
+     * xを置いた状態: 'x'
+     */
     private char[][] board;
-    private boolean turn; //true: o, false: x
+    /**
+     * true: o, false: x
+     */
+    private boolean turn;
 
-    /* コンストラクタ。初期化するだけ。 */
+    /**
+     * コンストラクタ。初期化するだけ。
+     */
     public TicTacToe() {
 	initialize();
     }
@@ -66,6 +69,8 @@ public class TicTacToe {
 
     /**
      * ユーザ'o'がボードに手を置く際に使用するメソッド。
+     * @param x ボードの横軸座標, 左から数えたインデックス。
+     * @param y ボードの縦軸座標, 上から数えたインデックス。
      */
     public void handCircle(int x, int y){
 	if( turn == true && board[x][y] == 'e' ){
@@ -81,6 +86,8 @@ public class TicTacToe {
 
     /**
      * ユーザ'x'がボードに手を置く際に使用するメソッド。
+     * @param x ボードの横軸座標, 左から数えたインデックス。
+     * @param y ボードの縦軸座標, 上から数えたインデックス。
      */
     public void handCross(int x, int y){
 	if( turn == false && board[x][y] == 'e' ){

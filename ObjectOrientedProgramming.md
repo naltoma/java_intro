@@ -2,13 +2,32 @@
 
 ## 目標
 - オブジェクト指向の考え方と、Java言語における基本的なクラスの実装方法・利用方法を理解する。
+- ドキュメンテーションツールJavadocに対応したコメントの書き方を理解する。
 
-- コード例: 3目並べ（oxゲーム）
-  - [TicTacToe.java](./TicTacToe/TicTacToe.java) // TicTacToeクラスを定義したファイル。
-    - ポイント
-      - 盤面情報を保存するフィールド変数 board と、手番管理用の変数 turn は private に指定している。
-      - board, turn を直接編集するメソッドは提供していない。実装を隠蔽している（実装を気にせず利用できるように、機能をメソッドとして提供している）。
-  - [Main.java](./TicTacToe/Main.java) // ゲームをプレイするmain()メソッドを含むクラス。
+<hr>
+
+## コード例、ドキュメント例
+### コード例: 3目並べ（oxゲーム）
+- [TicTacToe.java](./TicTacToe/TicTacToe.java) // TicTacToeクラスを定義したファイル。
+  - ポイント
+    - 盤面情報を保存するフィールド変数 board と、手番管理用の変数 turn は **private に指定** している。
+    - **board, turn を直接編集するメソッドは提供していない。実装を隠蔽している**（実装を気にせず利用できるように、機能をメソッドとして提供している）。
+- [Main.java](./TicTacToe/Main.java) // ゲームをプレイするmain()メソッドを含むクラス。
+- コンパイル＆実行方法
+  - ``javac -d . *.java``
+  - ``java jp/ac/uryukyu/tnal/Main``
+    - package名に注意。
+
+### ドキュメント例
+- 上記コード例の[APIドキュメント](./TicTacToe/apidoc/)。
+  - ドキュメント生成方法
+    - ``javadoc -charset "UTF-8" -private -d apidoc *.java``
+    - オプション説明
+      - -charset "UTF-8": UTF-8で記述されたソースファイルに対応。
+      - -private: private指定されてるメンバもドキュメントに含める。
+      - -d <directory_name>: -d で指定したディレクトリにドキュメントを生成する。
+        - 上記の例では apidoc というディレクトリに生成している。
+      - *.java: ドキュメント生成時に参照するソースコード。
 
 <hr>
 
