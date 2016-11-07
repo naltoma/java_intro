@@ -1,4 +1,4 @@
-# IntelliJ IDEA
+# IntelliJ IDEA 入門
 - 統合環境での開発に慣れよう。
   - 小さなプログラムならターミナルやテキストエディタだけで開発してても問題無いこともあるが、複雑なシステムになってくると辛くなる。
   - 実社会では統合環境の利用が当たり前。
@@ -10,9 +10,16 @@
     - IntelliJ起動
     - SDK (Software Development Kit)として「/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home」のように、jdk1.8が選択されることを確認。（デフォルトでそうなるはず）
 
+- ＜目次＞
+  - <a href="#zero">ゼロからプロジェクトを作成する場合</a>
+  - <a href="#jar_ready">jarファイルの構成</a>
+  - <a href="#jar_check">jarファイルの動作確認</a>
+  - <a href="#from_exist">既存プロジェクトをダウンロードして利用する場合</a>
+    - <a href="#git">バージョン管理システム: gitの場合</a>
+
 <hr>
 
-## ゼロからプロジェクトを作成する場合
+## <a name="zero">ゼロからプロジェクトを作成する場合</a>
 - 「Create New Project」を選択。
 - 「Java」を選択。
   - プロジェクト名を設定。
@@ -42,7 +49,7 @@ public class FirstClass {
 
 <hr>
 
-## jarファイルの構成
+## <a name="jar_ready">jarファイルの構成</a>
 - JAR: Java Archiveの略で、コンパイルされたバイトコードやそれが必要とするリソースを一つにまとめ、ZIP形式で圧縮されたファイルをjarファイルと呼ぶ。
   - Javaアプリやライブラリの提供等に使う。
   - こちらが提供する場合だけではなく、「ソースは公開したくないが、第三者に使用させたい」場合に jarファイルで公開する選択肢を選ぶケースも多い。（ので、使えるようになろう）
@@ -62,7 +69,7 @@ public class FirstClass {
 
 <hr>
 
-## jarファイルの動作確認
+## <a name="jar_check">jarファイルの動作確認</a>
 - jarファイルの動作確認1（IDEAで実行）
   - プロジェクトパネルで「out->artifacts->FirstClass_jar->FirstClass.jar」と辿り、jarファイルを選択する。
   - jarファイルを右クリック（Ctrl+クリック）し、「Run 'FirstClass.jar'」を選択。
@@ -75,8 +82,8 @@ public class FirstClass {
 
 <hr>
 
-## 既存プロジェクトをダウンロードして利用する場合
-### バージョン管理システム: gitの場合
+## <a name="from_exist">既存プロジェクトをダウンロードして利用する場合</a>
+### <a name="git">バージョン管理システム: gitの場合</a>
 - プロジェクトを閉じた状態で「Check out from Version Control」を選択。
   - バージョン管理システムを選択。ここではgit。
     - Git Repository URL に、[java_intro](https://github.com/naltoma/java_intro)のリポジトリURLを記入。
