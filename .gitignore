@@ -1,3 +1,5 @@
 *~
 jp/
 *.class
+.idea/
+*.iml
