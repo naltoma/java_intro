@@ -9,8 +9,6 @@ public class Ex1_1 {
             temp[j] = source.charAt(i);
         }
         //String target = new String(temp);
-        //return temp.toString();
-        //return target;
         return new String(temp);
     }
 
