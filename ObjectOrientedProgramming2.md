@@ -17,15 +17,15 @@
 
 ## 参照とは（教科書15章）
 ### コード例
-- Playerクラス: [Player.java](./Janken/Player.java)
+- Playerクラス: [Janken/Player.java](./Janken/Player.java)
   - report課題3に少しコードを追加したクラス。
-- PoorPlayerクラス: [PoorPlayer.java](./Janken/PoorPlayer.java)
+- PoorPlayerクラス: [Janken/PoorPlayer.java](./Janken/PoorPlayer.java)
   - Playerクラスを継承して作成したクラス。
-- Judgeクラス: [PoorPlayer.java](./Janken/Player.java)
+- Judgeクラス: [Janken/Judge.java](./Janken/Judge.java)
   - Player型オブジェクトを2つ用意して、対戦し、結果を出力するクラス。
 - Mainクラス
-  - [Main.java](./Janken/Main.java): Playerクラスを用いて実際にプレイするコード例。
-  - [Main2.java](./Janken/Main2.java): PoorPlayerクラスを用いて実際にプレイするコード例。
+  - [Janken/Main.java](./Janken/Main.java): Playerクラスを用いて実際にプレイするコード例。
+  - [Janken/Main2.java](./Janken/Main2.java): PoorPlayerクラスを用いて実際にプレイするコード例。
 - ポイント
   - 「PoorPlayerクラス」はPlayerクラスを継承している。親クラス（Playerクラス）を利用しているため、Playerクラスを想定して記述したJudgeクラスを変更せずとも利用できる。
 
