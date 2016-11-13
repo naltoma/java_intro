@@ -58,7 +58,7 @@ Host github.com
   - 「public」にする。
   - 「Create project」をクリック。
     - 生成されたプロジェクトページにある、「https」右側のリンクをクリックし、コピー。
-      - 私の場合、「https://github.com/naltoma/ExampleUnitTest.git」というURLになる。これがリポジトリへ作業するためのURL。
+      - 私の場合、「 https://github.com/naltoma/ExampleUnitTest.git 」というURLになる。これがリポジトリへ作業するためのURL。
 
 <hr>
 
