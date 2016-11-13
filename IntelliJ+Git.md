@@ -1,15 +1,29 @@
 # Gitによるバージョン管理 on IntelliJ
-## 復習: (前期資料) Gitによるバージョン管理入門
+
+- 目次
+- <a href="#review">復習: (前期資料) Gitによるバージョン管理入門</a>
+- <a href="#github-login">GitHubへのログイン</a>
+- <a href="#ssh-key">ssh-keyの登録</a>
+- <a href="#github-project">GitHub上にプロジェクトを作成</a>
+- <a href="#github-project-push">PC側で作業してる既存プロジェクトを、上記で作成したプロジェクトに登録する。</a>
+
+<hr>
+
+## <a name="review">復習: (前期資料) Gitによるバージョン管理入門</a>
 - [Gitによるバージョン管理入門](https://ie.u-ryukyu.ac.jp/~tnal/2016/prog1/Git.html)
 
-## GitHubへのログイン
+<hr>
+
+## <a name="github-login">GitHubへのログイン</a>
 - ここでは[Github](https://github.com)の利用を想定しているが、[学科のgitlabサーバ](https://gitlab.ie.u-ryukyu.ac.jp/gitlab/users/sign_in)を利用したいのであればそちらでも構わない。
 - [Github](https://github.com)へアクセス。
   - Sign Up をクリック。
   - username, email address, password を入力して「Create an account」。
     - usernameは自由で構わないが、少なくともemail addressは学科のアドレスを指定すること。（そうしないと誰のリポジトリか判別できない）
 
-## ssh-keyの登録
+<hr>
+
+## <a name="ssh-key">ssh-keyの登録</a>
 - ブラウザ内、右上のアイコンをクリックして「Settings」を選択。
   - 左メニューの「SSH and GPG keys」を選択。
     - 「New SSH key」を選択。
@@ -35,8 +49,9 @@ Host github.com
   - 「Add SSH key」をクリック。
   - パスワードを要求されるので、Githubへログインするためのパスワードを入力。
 
+<hr>
 
-## GitHub上にプロジェクトを作成
+## <a name="github-project">GitHub上にプロジェクトを作成</a>
 - 右上アイコン隣の「+」をクリックし、「New repository」を選択。
   - Project name を「ExampleUnitTest」とする。
   - Project description に「プログラミング2、UnitTestの練習」ぐらいの説明を書いておく。
@@ -45,7 +60,9 @@ Host github.com
     - 生成されたプロジェクトページにある、「https」右側のリンクをクリックし、コピー。
       - 私の場合、「https://github.com/naltoma/ExampleUnitTest.git」というURLになる。これがリポジトリへ作業するためのURL。
 
-## PC側で作業してる既存プロジェクトを、上記で作成したプロジェクトに登録する。
+<hr>
+
+## <a name="github-project-push">PC側で作業してる既存プロジェクトを、上記で作成したプロジェクトに登録する。</a>
 - IntelliJで作成したプロジェクトのウィンドウに戻る。
   - VCSメニューから「Enable Version Control Integration」を選択。
     - 「Git」を選択し、OK。
