@@ -1,12 +1,13 @@
 # IntelliJ + JUnit4によるユニットテスト
 - 流れ
-  - サンプルコードの準備
-  - テストコードの記述
-  - ユニットテストの実行
+  - <a href="#pre">サンプルコードの準備</a>
+  - <a href="#consider">（討論）実行結果や、コードを眺めて気になることは無いだろうか？</a>
+  - <a href="#testcode">テストコードの記述</a>
+  - <a href="#testing">ユニットテストの実行</a>
 
 <hr>
 
-## サンプルコードの準備
+## <a name="pre">サンプルコードの準備</a>
 - プロジェクト新規作成
   - Java
   - Project name を「ExampleUnitTest」に。
@@ -59,11 +60,12 @@ Process finished with exit code 0
 
 <hr>
 
-## 実行結果や、コードを眺めて気になることは無いだろうか？
+## <a name="consider">（討論）実行結果や、コードを眺めて気になることは無いだろうか？</a>
+- 討論メモ
 
 <hr>
 
-## テストコードの記述
+## <a name="testcode">テストコードの記述</a>
 - Enemyクラスのattackメソッドにテストコードを書こう。
   - テストを記述するファイルの準備。
     - Enemy.javaを開く。
@@ -103,17 +105,21 @@ Process finished with exit code 0
           - [チュートリアル](https://github.com/junit-team/junit4/wiki/Getting-started)
           - [JUnit4 API doc](http://junit.org/junit4/javadoc/latest/index.html)
     - テスト例: [EnemyTest.java](https://github.com/naltoma/ExampleUnitTest/blob/master/src/test/jp/ac/uryukyu/ie/tnal/EnemyTest.java)
-  - テストを実行。
-    - 左の一覧メニューのEnemyTest.javaをCtrl+クリック。
-    - 「Run 'EnemyTest'」を実行。
-      - 問題なければ（テストが通れば）、画面下に「1 test passed」という表示とともにグリーン表示になる。テストに失敗したら、失敗したテストの詳細と共にレッド表示になる。
-      - 「パッケージorg.junitは存在しません」といった、JUnit4パッケージを見つけられない状態だと、EnemyTestを実行できない（コンパイル・エラーになる）。
-        - Fileメニューの「Project Structure...」を選択。
-        - 「Libraries」を選択。
-        - 「+」をクリックして、「From Maven...」を選択。
-        - Download Library from Maven Repository に「junit:junit」を入力し、右にある「...」をクリックして検索する。
-          - junitライブラリが複数見つかるので、JUnit4の最新版かつ「betaではないもの（stable版）」を選択する。2016/11/13時点では「junit:junit:4.12」が最新安定版。
-          - junit4.12を選択して、「OK」。
-        - 今作業してるプロジェクトExampleUnitTestに追加すると聞かれるので「OK」。
-        - Librariesの画面に戻ったら、「Apply」して「OK」。
-        - これでJUnit4がインストールできたはずなので、改めてEnemyTest.javaを実行してみよう。
+
+<hr>
+
+## <a name="testing">ユニットテストの実行</a>
+- テストを実行。
+  - 左の一覧メニューのEnemyTest.javaをCtrl+クリック。
+  - 「Run 'EnemyTest'」を実行。
+    - 問題なければ（テストが通れば）、画面下に「1 test passed」という表示とともにグリーン表示になる。テストに失敗したら、失敗したテストの詳細と共にレッド表示になる。
+    - 「パッケージorg.junitは存在しません」といった、JUnit4パッケージを見つけられない状態だと、EnemyTestを実行できない（コンパイル・エラーになる）。
+      - Fileメニューの「Project Structure...」を選択。
+      - 「Libraries」を選択。
+      - 「+」をクリックして、「From Maven...」を選択。
+      - Download Library from Maven Repository に「junit:junit」を入力し、右にある「...」をクリックして検索する。
+        - junitライブラリが複数見つかるので、JUnit4の最新版かつ「betaではないもの（stable版）」を選択する。2016/11/13時点では「junit:junit:4.12」が最新安定版。
+        - junit4.12を選択して、「OK」。
+      - 今作業してるプロジェクトExampleUnitTestに追加すると聞かれるので「OK」。
+      - Librariesの画面に戻ったら、「Apply」して「OK」。
+      - これでJUnit4がインストールできたはずなので、改めてEnemyTest.javaを実行してみよう。
