@@ -60,6 +60,11 @@ Process finished with exit code 0
 
 <hr>
 
+## 学科のGitlabサーバへリポジトリ登録
+- <a href="./Git.md">Gitによるバージョン管理 on IntelliJ</a>を参考に、リポジトリ登録。
+
+<hr>
+
 ## <a name="consider">（討論）実行結果や、コードを眺めて気になることは無いだろうか？</a>
 - 討論メモ
 
