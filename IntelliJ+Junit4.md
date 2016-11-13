@@ -128,3 +128,10 @@ Process finished with exit code 0
       - 今作業してるプロジェクトExampleUnitTestに追加すると聞かれるので「OK」。
       - Librariesの画面に戻ったら、「Apply」して「OK」。
       - これでJUnit4がインストールできたはずなので、改めてEnemyTest.javaを実行してみよう。
+- リポジトリへ作業記録を登録。
+  - (1) PCリポジトリへの登録
+    - 今の時点ではEnemyTestのテストは失敗して良い。失敗することを確認できたら、commit & push しよう。
+    - EnemyTest.java を開いてる状態で、VCSメニューから Git -> Add。
+    - VCSメニュー -> Git -> Commit File
+  - (2) githubリポジトリへのへの登録
+    - VCSメニュー -> Git -> push
