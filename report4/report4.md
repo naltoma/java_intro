@@ -5,14 +5,16 @@
   - 今回のレポート3についても「最大3ページ」に収めるようにして下さい。
     - ソースファイルも提出してもらうので、レポートに全コードコピペ掲載する必要はありません。特に工夫した点のみを掲載した上で解説・考察しよう。
 
-<ul>
-<lh>＜目次＞</lh>
-<li><a href="#abst">課題概要</a>
-<li><a href="#details">詳細仕様</a>
-<li><a href="#output_example">実行例</a>
-<li><a href="#report">取り組み方</a>
-<li><a href="#submit">提出方法</a>
-</ul>
+- ＜目次＞
+- <a href="#abst">課題概要</a>
+- <a href="#details">詳細仕様</a>
+  - <a href="#details_step0">ステップ0: コードの準備。</a>
+  - <a href="#details_step1">ステップ1: 死亡した後で攻撃できてしまう件をどうにかしたい。</a>
+  - <a href="#details_step2">ステップ2: EnemyクラスとHeroクラスの重複をどうにかしたい。</a>
+  - <a href="#details_step3">ステップ3: カプセル化しよう。</a>
+- <a href="#output_example">実行例</a>
+- <a href="#report">取り組み方</a>
+- <a href="#submit">提出方法</a>
 
 <hr>
 ## <a name="abst">課題概要</a>
@@ -20,7 +22,7 @@
 
 <hr>
 ## <a name="details">詳細仕様</a>
-### ステップ0: コードの準備。
+### <a name="details_step0">ステップ0: コードの準備。</a>
 - IntelliJで新規プロジェクトを作成せよ。プロジェクト名は「Report4」とする。
 - [サンプルコードの準備](https://github.com/naltoma/java_intro/blob/master/IntelliJ%2BJunit4.md#pre)を参考に、Hero.java, Enemy.java, Main.java, EnemyTest.java の4つを適切に配置し、リソース設定せよ。
   - pacakge名は自身のものに修正すること。
@@ -31,8 +33,9 @@
 - レポート報告事項
   - ステップ0に関しては、pushしたリポジトリURL（作業用URL）を報告するだけで良い。
 
+<hr>
 
-### ステップ1: 死亡した後で攻撃できてしまう件をどうにかしたい。
+### <a name="details_step1">ステップ1: 死亡した後で攻撃できてしまう件をどうにかしたい。</a>
 - EnemyTestのattack()では、enemy.deadがtrueの時、すなわちenemyが死亡している時に攻撃できてしまうことを検証している。
   - Enemy.javaのattack()だけを修正し、「enemyが死亡時に攻撃できない」ようにせよ。他クラスやメソッドは変更しないこと。
     - ここで「攻撃できない」とは、相手のHPが減らないこととする。
@@ -44,8 +47,9 @@
       - ``git log -p -1`` を実行し、直近1つのコミットでの変更点を出力させる。この実行結果全体をレポートに含めよう。（このコマンドの意味は[前期資料](https://ie.u-ryukyu.ac.jp/~tnal/2016/prog1/Git.html#5)で確認しよう。）
   - 想定: 数行の追加で終わるはず。
 
+<hr>
 
-### ステップ2: EnemyクラスとHeroクラスの重複をどうにかしたい。
+### <a name="details_step2">ステップ2: EnemyクラスとHeroクラスの重複をどうにかしたい。</a>
 - EnemyクラスとHeroクラスを眺めると、殆どが同一コードであることに気づくはずだ。先程 Enemy.attack() を修正したが、同じ修正コードを Hero.java にも追加記述するのはあまりヨロシクない。（DRY原則）
   - いろんな対応方法が考えられるが、ここでは以下のように修正してみよう。
     - 両方に共通するLivingThingクラスを新規作成しよう。
@@ -71,8 +75,9 @@
 - レポート報告事項
   - コード掲載は不要である。今回のコード修正を通して、気づいたことを報告せよ。
 
+<hr>
 
-### ステップ3: カプセル化しよう。
+### <a name="details_step3">ステップ3: カプセル化しよう。</a>
 - LivingThingクラスのフィールド変数（String name, int hitPoint, int attack, boolean dead）は、全てアクセス修飾子なしになっている。勝手に他のクラスから修正されると困るため、これらをカプセル化しよう。
   - 上記4変数を private にし、用意されてないgetter/setterも用意しよう。
   - この隠蔽化に伴い、直接フィールド変数へアクセスしている箇所でエラーが起きるはずだ。
@@ -84,7 +89,7 @@
 
 
 <hr>
-## <a href="output_example">実行例</a>
+## <a name="output_example">実行例</a>
 - 修正前: ExampleUnitTest での実行例。
   - 修正前は、スライムが倒れた後も攻撃している。
 
