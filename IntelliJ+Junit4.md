@@ -60,7 +60,7 @@ Process finished with exit code 0
 
 <hr>
 
-## 学科のGitlabサーバへリポジトリ登録
+## GitHubへリポジトリ登録
 - <a href="https://github.com/naltoma/java_intro/blob/master/IntelliJ%2BGit.md">Gitによるバージョン管理 on IntelliJ</a>を参考に、リポジトリ登録。
 
 <hr>
