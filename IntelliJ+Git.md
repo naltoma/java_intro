@@ -20,6 +20,8 @@
   - Sign Up をクリック。
   - username, email address, password を入力して「Create an account」。
     - usernameは自由で構わないが、少なくともemail addressは学科のアドレスを指定すること。（そうしないと誰のリポジトリか判別できない）
+    - Unlimited public repositories for free. を選択。
+    - Tailor your experience は説明文読んで回答。
 
 <hr>
 
