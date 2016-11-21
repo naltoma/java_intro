@@ -4,18 +4,19 @@
   - [GitHub初心者はForkしない方のPull Requestから入門しよう](http://blog.qnyp.com/2013/05/28/pull-request-for-github-beginners/)
   - [3.6 Git のブランチ機能 - リベース](https://git-scm.com/book/ja/v1/Git-のブランチ機能-リベース)
 - 目次（今回の流れ）
-  - 作業用リポジトリを用意。
-  - リポジトリを Fork する（Github上で他人リポジトリを自リポジトリに複製）。
-  - 複製リポジトリをPC側に clone する。
-  - 個人作業用 branch を作る。
-  - 編集する。
-  - commit する。（PC内）
-  - push する。（Githubの自リポジトリへ）
-  - upstream の設定。（オリジナルのリポジトリを設定）
+  - <a href="#init">作業用リポジトリを用意。</a>
+  - <a href="#fork">リポジトリを Fork する（Github上で他人リポジトリを自リポジトリに複製）。</a>
+  - <a href="#clone">複製リポジトリをPC側に clone する。</a>
+  - <a href="#branch">個人作業用 branch を作る。</a>
+  - <a href="#edit">作成したブランチ上で編集する。</a>
+  - <a href="#commit">修正できたら、commit する。（PC内）</a>
+  - <a href="#push">push する。（Githubの自リポジトリへ）</a>
+  - <a href="#pullreq">Pull Request の作成。</a>
+  - <a href="#original">オリジナルのリポジトリにはどのように伝わっているか。</a>
 
 <hr>
 
-## 作業用リポジトリを用意。
+## <a name="init">作業用リポジトリを用意。</a>
 - IntelliJで、「PullReq」プロジェクトを新規作成。
 
 
@@ -36,7 +37,7 @@
 
 <hr>
 
-## リポジトリを Fork する（Github上で他人リポジトリを自リポジトリに複製）。
+## <a href="fork">リポジトリを Fork する（Github上で他人リポジトリを自リポジトリに複製）。</a>
 
 - Githubにて、ペア相手の「PullReq」リポジトリをブラウザで参照する。（ユーザ名から辿れるはず）
 - 右上にある「Fork」をクリック。
@@ -47,7 +48,7 @@
 
 <hr>
 
-## 複製リポジトリをPC側に clone する。
+## <a href="clone">複製リポジトリをPC側に clone する。</a>
 - IntelliJに戻り、開いてる作業ウィンドウを閉じる。
 - Fileメニューから「New -> Project from Version Control -> Git」。
   - リポジトリURLから clone を作成。
@@ -55,7 +56,7 @@
 
 <hr>
 
-## 個人作業用 branch を作る。
+## <a href="branch">個人作業用 branch を作る。</a>
 - ブランチ(branch)とは、「リポジトリのメインストリームに影響を及ぼさないように、仮想的に分岐して管理する」ための機能。pull request を送るか否かに関わらず、お試しで編集したいならまずブランチを作るぐらいの気持ちでやっても良い。
 - また、今回は最初から「Enemy.attack()に関する修正をする」つもりでブランチを作ります。このブランチで、他の作業はしないようにしましょう。誤って無関係なcommitを先方に送りつけてしまうと、意味不明なリクエストになります。
   - 参考: [branchのイメージ](http://kray.jp/blog/git-pull-rebase/)
@@ -66,7 +67,7 @@
   - VCS -> Git -> branches... をもう一度選択し、「+ New Branch」をクリック。「FixEnemyAttack」という名前でブランチを作ろう。（基本的には自由ですが、今回は指定します）
   - もう一度 VCS -> Git -> branches を選択すると、origin/masterとは別に、ローカルにFixEnemyAttackというブランチがあること。また、現在FixEnemyAttackブランチにいることを確認できるはずだ。ここでcommit&pushしても、masterブランチには影響を及ぼさないので、お試し開発等の用途で安心していじり倒すことができる。（邪魔になったらブランチを削除しても良い）
 
-## 作成したブランチ上で編集する。
+## <a href="edit">作成したブランチ上で編集する。</a>
 - 問題があることを検証しやすくするために、テストを追加する。
   - Enemy.java に対するテスト EnemyTest.java を作成しよう。中身は次の通りとする。（package名の整合性を取ろう）
     - [EnemyTest.java](https://github.com/naltoma/ExampleUnitTest/blob/master/src/test/jp/ac/uryukyu/ie/tnal/EnemyTest.java)
@@ -89,14 +90,14 @@ public void attack(Hero hero){
 
 <hr>
 
-## 修正できたら、commit する。（PC内）
+## <a href="commit">修正できたら、commit する。（PC内）</a>
 - Enemy.attack()を編集し、EnemyTestのテストが成功することを確認。成功したら、commitしよう。
   - commit message は、Enemy.attack()の問題を解消したことが伝わるようなコメントを書こう。
   - コメント例: [gitにおけるコミットログ/メッセージ例文集100](http://anond.hatelabo.jp/20160725092419)
 
 <hr>
 
-## push する。（Githubの自リポジトリへ）
+## <a href="push">push する。（Githubの自リポジトリへ）</a>
 - pushしよう。EnemyTest.java追加時にpushしていなければその分と、Enemy.attack()修正した分のコミット2件分をまとめてpushすることになる。（先程pushを済ましていたら、1件分pushになる）
 - これで、自分のリポジトリ上には問題修正版を置いたことになる。
 - ブランチを作成してから作業したが、これがGitHub上でどのように見えるのか、ブラウザで確認してみよう。
@@ -106,7 +107,7 @@ public void attack(Hero hero){
 
 <hr>
 
-## Pull Request の作成。
+## <a href="pullreq">Pull Request の作成。</a>
 - 修正版をpushしたリモートリポジトリに、ブラウザでアクセス。（Github上のPullReqCopiedへアクセス）
   - 「New Pull Request」をクリック。
   - マージしたいブランチ（＝修正版を伝えたいブランチ）を選択。
@@ -120,7 +121,7 @@ public void attack(Hero hero){
 
 <hr>
 
-## オリジナルのリポジトリにはどのように伝わっているか。
+## <a href="original">オリジナルのリポジトリにはどのように伝わっているか。</a>
 - pull requestで通知したら、オリジナルにはどのように伝わっているだろうか。Githubでオリジナルリポジトリを参照してみよう。
   - 「Pull requests」が1になってるはずだ。これをクリック。
   - 先程、ペア相手の人が送ってきたリクエストが届いているはずだ。タイトルをクリックして詳細を確認してみよう。
