@@ -21,7 +21,6 @@
 
 
 - Githubで、「PullReq」リポジトリ(public)を新規作成。
-- IntelliJで、PullReq リポジトリから clone してプロジェクトを作成。
   - src/main フォルダを作成し、Sources設定。
   - src/main に先週の授業で利用したコード例[ExampleUnitTest](https://github.com/naltoma/ExampleUnitTest)の Enemy.java, Hero.java, Main.java をコピペ作成。
     - ここではパッケージの指定、EnemyTest.javaの作成はやってもやらなくても良い。
@@ -32,7 +31,7 @@
 - Githubで、「PullReq」リポジトリを新規作成。
   - リポジトリURL（作業用URL）をコピー。
 - IntelliJ作業ウィンドウに戻る。
-  - Git -> Pull し、リモートリポジトリとして先程コピーしたURLを設定する。
+  - Git -> Push し、リモートリポジトリとして先程コピーしたURLを設定する。
 - この時点で、IntelliJプロジェクトと、Githubリポジトリが同一内容になっているはず。
 
 <hr>
