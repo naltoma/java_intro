@@ -47,10 +47,11 @@
     - オブジェクトを大まかに扱うことで、プログラマが楽をする。
       - 例えば、道路交通シミュレーションすることを想像してみよう。
         - 道路を利用する（道路上を移動する）対象は、車（バス、ダンプカー、中型トラック、自家用車）、バイク（自動二輪、原付き）、自転車、歩行者（一般人、子供、不注意者）、、、
-          - これらを「道路上を移動するオブジェクト MovingObject」というスーパークラスを用意した上で、各々継承したサブクラスとして実装する。スーパークラスには「1秒間動く move()メソッド」を用意しておき、具体的な実装は各サブクラスで用意する。
+          - これらを「道路上を移動するオブジェクト Vehicle」というスーパークラスを用意した上で、各々継承したサブクラスとして実装する。スーパークラスには「1秒間動く move()メソッド」を用意しておき、具体的な実装は各サブクラスで用意する。
+            - [クラス図の例](./figs/Polymorphism.svg.xml.svg)
         - シミュレータのmainメソッドで、各クラスのインスタンスを用意する。
           - 用意した全オブジェクトに対して「1秒間動く move()メソッド」を実行させる際に、ポリモーフィズムがない状況だと「クラス毎にmove()メソッドを呼び出す」必要がある。これは、クラス数が多いと大変だし、無駄でもある。
-            - ポリモーフィズムがある状況だと、全クラスのスーパークラスが持つメソッド MovingObject.move() を実行するだけで良い。
+            - ポリモーフィズムがある状況だと、全クラスのスーパークラスが持つメソッド Vehicle.move() を実行するだけで良い。
 
 ```
 # 擬似コード1（ポリモーフィズムがない状況）
@@ -72,17 +73,17 @@ for(DumpCar dumpCar: dumpCars){
 
 
 # 擬似コード2（ポリモーフィズムがある状況）
-MovingObject[] movingObjects = new movingObject[5];
-movingObject[0] = new Bus();
-movingObject[1] = new Bus();
-movingObject[2] = new Bus();
-movingObject[3] = new DumpCar();
-movingObject[4] = new DumpCar();
+Vehicle[] Vehicles = new Vehicle[5];
+Vehicle[0] = new Bus();
+Vehicle[1] = new Bus();
+Vehicle[2] = new Bus();
+Vehicle[3] = new DumpCar();
+Vehicle[4] = new DumpCar();
 
 // どれだけサブクラスが増えたとしても、
 // シミュレータ側では下記ループ文だけで全オブジェクトを操作できる。
-for(MovingObject movingObject: movingObjects){
-  movingObject.move();
+for(Vehicle Vehicle: Vehicles){
+  Vehicle.move();
   //オーバーライドにより、オブジェクト自身のメソッドが実行される。
 }
 ```
