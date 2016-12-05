@@ -3,8 +3,8 @@
 - オブジェクトでは、継承関係にある型同士は、同じ種類の型と看做される。
   - スーパークラス型への代入(pp.419-)
     - 代入可能。
-    - オブジェクトは代入によって変化しない。
-    - スーパークラス型変数では、サブクラスで拡張したメンバにはアクセスできない。
+    - **オブジェクトは代入によって変化しない。**
+    - スーパークラス型変数では、サブクラスで拡張したメンバにはアクセスできない。（スーパークラスからアクセス出来ないだけで、保持していることに注意）
   - サブクラス型への代入(pp.421-)
     - コンパイルエラー。
   - キャストによる強制的な代入とinstanceof演算子(pp.422-)
@@ -19,6 +19,7 @@
 ## オーバーライド（18.2節）
 - オーバーライド概要(pp.426)
   - 継承したメソッドの機能を変更（≒上書き）すること。
+    - OverloadとOverrideの違い: [コード例:ExamplePolymorphism](https://github.com/naltoma/ExamplePolymorphism)
     - どういう時に変更するのか？
       - 継承しただけでは役に立たない状態のメソッドや、変更しなければコンパイルエラーになるメソッドがある場合。（大まかな仕組みのみをスーパークラスで作り、機能詳細はサブクラスに一任するケース）
         - e.g., [java.util.AbstractList](http://docs.oracle.com/javase/8/docs/api/java/util/AbstractList.html) は、「public abstract class AbstractList<E>」として宣言されている。abstractなclassは、実装していないメソッドがあることを示しており、継承先で実装する必要がある。
@@ -74,11 +75,11 @@ for(DumpCar dumpCar: dumpCars){
 
 # 擬似コード2（ポリモーフィズムがある状況）
 Vehicle[] vehicles = new Vehicle[5];
-Vehicle[0] = new Bus();
-Vehicle[1] = new Bus();
-Vehicle[2] = new Bus();
-Vehicle[3] = new DumpCar();
-Vehicle[4] = new DumpCar();
+vehicles[0] = new Bus();
+vehicles[1] = new Bus();
+vehicles[2] = new Bus();
+vehicles[3] = new DumpCar();
+vehicles[4] = new DumpCar();
 
 // どれだけサブクラスが増えたとしても、
 // シミュレータ側では下記ループ文だけで全オブジェクトを操作できる。
