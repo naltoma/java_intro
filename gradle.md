@@ -27,16 +27,16 @@ gradle -v
 - 手順
   - Gradle Project の作成。
     - IntelliJ で新規プロジェクト作成。作成時に「Gradle」を選択。Additional Libraries にJavaが含まれていることを確認。Next.
-    - GroupID/ArtifactId を ExamplePolymorphism に。Next.
+    - GroupID/ArtifactId を GradleExample に。Next.
     - オプション設定
-      - +//「Create directories for empty content roots automatically」にチェック。
+      - 「Create directories for empty content roots automatically」にチェック。
       - 「Create separate module per source set」にチェック。
       - 「Use default gradle wrapper (recommended)」にチェック。
       - 上記以外はチェックを外す。
       - Gradel JVM を java 1.8 に。
       - Next.
     - プロジェクト名
-      - 特に問題なければそのまま。Finish.
+      - 特に変更不要であればそのまま。Finish.
   - 設定確認。
     - FileメニューからProject Structures...を選択。
       - src/main/javaをSourcesに「なっていることを確認」。
@@ -88,7 +88,7 @@ jar {
 
 ## Gradleチュートリアル2（ユニットテストを自動化してみる）
 - ゴール
-  - gradleでコンパイル済みjarファイルを作成し、動作確認する。
+  - gradleでユニットテストを実行する。（gradle自体の追加設定はなし）
 - 手順
   - Example.javaに、次のメソッドを追加。（「a - b」にしているのは、意図的です）
 ```
@@ -118,3 +118,5 @@ jar {
           - ここで気づいてほしいメリットは次の通り。
             - 実際にユニットテストを書いたファイルは、src/test/java/package/ 以下にある。
             - どこにあるかは気にせず、``gradle test`` と実行するだけでそのファイルを実行してくれている。
+
+<hr>
