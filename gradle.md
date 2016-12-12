@@ -1,5 +1,7 @@
 # ビルドツール gradle の利用。オマケでmakeも。
 - [Gradle公式サイト](https://gradle.org)
+- [makeの補足](https://ie.u-ryukyu.ac.jp/~tnal/2005/info1/make.html)
+  - 文字化けするなら文字コードを「Shift JIS」指定してください。
 - ＜目次＞
   - <a href="#whatis">ビルドツールとは</a>
   - <a href="#ready">Gradleの環境構築＆動作確認</a>
