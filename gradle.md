@@ -1,7 +1,16 @@
 # ビルドツール gradle の利用。オマケでmakeも。
 - [Gradle公式サイト](https://gradle.org)
+- ＜目次＞
+  - <a href="#whatis">ビルドツールとは</a>
+  - <a href="#ready">Gradleの環境構築＆動作確認</a>
+  - <a href="#tutorial1">Gradleチュートリアル1（jarファイル生成を自動化してみる）</a>
+  - <a href="#tutorial2">Gradleチュートリアル2（ユニットテストを自動化してみる）</a>
+  - <a href="#make">Makefile概要</a>
+  - <a href="#make-tutorial">Makefileチュートリアル</a>
 
-## ビルドツールとは
+<hr>
+
+## <a name="whatis">ビルドツールとは</a>
 - ビルド(build)≒コンパイル(compile)。コンパイルとは限らないが「何かを生成するために用意したファイル群から、対象を生成すること」をビルドと呼ぶ。
 - ビルドツールは、この作業を支援するためのツール。
   - ファイルが多数あると、（利用側は）どれをコンパイルしたら良いかわからない。
@@ -11,7 +20,7 @@
 
 <hr>
 
-## Gradleの環境構築＆動作確認
+## <a name="ready">Gradleの環境構築＆動作確認</a>
 ```
 brew install gradle
 rehash
@@ -21,7 +30,7 @@ gradle -v
 
 <hr>
 
-## Gradleチュートリアル1（jarファイル生成を自動化してみる）
+## <a name="tutorial1">Gradleチュートリアル1（jarファイル生成を自動化してみる）</a>
 - ゴール
   - gradleでコンパイル済みjarファイルを作成し、動作確認する。
 - 手順
@@ -55,7 +64,6 @@ gradle -v
       - 最後尾に以下の記述を追加。atttributes内のパッケージ名は、自身のものに修正すること。
 ```
 jar {
-    // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     manifest {
         attributes  "Main-Class": "jp.ac.uryukyu.ie.tnal.Example"
         attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
@@ -86,7 +94,7 @@ jar {
 
 <hr>
 
-## Gradleチュートリアル2（ユニットテストを自動化してみる）
+## <a name="tutorial2">Gradleチュートリアル2（ユニットテストを自動化してみる）</a>
 - ゴール
   - gradleでユニットテストを実行する。（gradle自体の追加設定はなし）
 - 手順
@@ -121,10 +129,10 @@ jar {
 
 <hr>
 
-## Makefile概要
+## <a name="make">Makefile概要</a>
 - これもビルドツールの一種。古いけど簡単なことならこれで十分。
 
-## Makefileチュートリアル
+## <a name="make-tutorial">Makefileチュートリアル</a>
 - ゴール
   - makeでサンプルコードをビルドし、動作確認する。
   - Makefileの読み方（概要）を理解する。
