@@ -116,6 +116,7 @@ jar {
         assertEquals(3, Example.add(1, 2));
     }
 ```
+
     - ユニットテストの実行。
       - case 1: IntelliJからgradleで実行。
         - Tasks -> testClasses をダブルクリック。
