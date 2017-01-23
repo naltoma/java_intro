@@ -32,6 +32,6 @@
 ## <a name="howto">Threadの実装方法、コード例</a>
 - 山田先生の資料: [スレッドを作る方法](https://ie.u-ryukyu.ac.jp/~koji/pw/index.php?cmd=read&page=Programming_II%2F08%2F第13回#ucea891e)
 - コード例: [ThreadExample](https://github.com/naltoma/ThreadExample)
-  - NormalCount.java: スレッド無しで、数をカウントする例。
-  - ThreadCount.java: Threadの拡張クラスとしてrun()メソッドを実装し、start()メソッドを呼び出す例。
-  - RunnableCount.java: Runnableインタフェースの実装としてrun()メソッドを用意し、Threadクラスのインスタンス生成してからstart()メソッドを呼び出す例。
+  - NormalCount.java, ExecNormalCount.java: スレッド無しで、数をカウントする例。
+  - ThreadCount.java, ExecThreadCount.java: Threadの拡張クラスとしてrun()メソッドを実装し、start()メソッドを呼び出す例。
+  - RunnableCount.java, ExecRunnableCount.java: Runnableインタフェースの実装としてrun()メソッドを用意し、Threadクラスのインスタンス生成してからstart()メソッドを呼び出す例。
