@@ -13,7 +13,6 @@
   - <a href="#goal">達成目標</a>
   - <a href="#compiler_interpreter">コンパイラ言語の中でも変わった位置づけのJava言語（教科書1.1節〜）</a>
   - <a href="#static_dynamic_type">静的型付け言語と動的型付け言語</a>
-  <ul>
   - <a href="#ex1">例題1: 四則演算結果を標準出力してみよう。</a>
     - Javaコード例の動かし方
     - コード比較を通したJava言語の特徴
