@@ -39,7 +39,7 @@
 - コード例をコンパイルし、実行できる。
 - コード例を編集し、利用できる。
 - 静的型付け言語であることを理解して、コードを記述できる。
-- 基本構文（if, for, while）と関数を利用して、[プログラミング2のレポート1](https://github.com/naltoma/c_intro/blob/master/report1/report1.md)程度のプログラムを作成できる。
+- 基本構文（if, for, while）とメソッド（≒関数）を利用した、短いプログラムを作成できる。
 - 配列を利用することができる。
 - クラスを利用することができる。
 - リファレンスを参照することができる。
@@ -82,7 +82,7 @@
 ### <a name="ex1">例題1: 四則演算結果を標準出力してみよう。</a>
 - Pythonでの例: ex1.py
 
-```
+```python
 # a+bの結果を標準出力するコード。
 a = 1
 b = 2
@@ -92,7 +92,7 @@ print('{0} + {1} = {2}'.format(a,b,result))
 
 - Javaコード例: [ExampleAdd.java](./ExampleAdd.java)
 
-```
+```java
 /* a+bの結果を標準出力するコード。 */
 package jp.ac.uryukyu.ie.tnal; //「tnal」は自身の学科アカウントに修正すること。
 
