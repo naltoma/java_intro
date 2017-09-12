@@ -214,7 +214,7 @@ for i in data:
         print('奇数')
 ```
 
-- Java言語でのコード例: [CheckOdd.Java](./CheckOdd.Java)
+- Java言語でのコード例: [CheckOdd.java](./CheckOdd.java)
 
 ```java
 /* 複数のint型要素を用意して、中身が偶数だった時は数値を出力し、奇数だった時は「奇数」と出力するプログラム。 */
@@ -308,7 +308,7 @@ for score in scores:
 
 ```
 
-- Java言語でのコード例: [EvalScore.Java](./EvalScore.Java)
+- Java言語でのコード例: [EvalScore.java](./EvalScore.java)
 
 ```java
 /* 100点満点採点した学生の成績をチェックし、A~F判定を返す関数。 */
