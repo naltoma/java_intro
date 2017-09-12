@@ -204,7 +204,7 @@ API Specification](http://docs.oracle.com/javase/8/docs/api/)
 
 - Pythonでのコード例: ex2.py
 
-```
+```python
 # 複数のint型要素を用意して、中身が偶数だった時は数値を出力し、奇数だった時は「奇数」と出力するプログラム。
 data = [1, 2, 3]
 for i in data:
@@ -216,7 +216,7 @@ for i in data:
 
 - Java言語でのコード例: [CheckOdd.Java](./CheckOdd.Java)
 
-```
+```java
 /* 複数のint型要素を用意して、中身が偶数だった時は数値を出力し、奇数だった時は「奇数」と出力するプログラム。 */
 package jp.ac.uryukyu.ie.tnal;
 
@@ -285,7 +285,7 @@ public class CheckOdd {
 
 - Pythonでのコード例: ex3.py
 
-```
+```python
 # 100点満点採点した学生の成績をチェックし、A~F判定を返す関数。
 def eval(score):
     answer = 'F'
@@ -310,7 +310,7 @@ for score in scores:
 
 - Java言語でのコード例: [EvalScore.Java](./EvalScore.Java)
 
-```
+```java
 /* 100点満点採点した学生の成績をチェックし、A~F判定を返す関数。 */
 package jp.ac.uryukyu.ie.tnal;
 
@@ -369,7 +369,7 @@ public class EvalScore {
 
 - Pythonでのコード例: ex4.py
 
-```
+```python
 # 「アカウント名、点数、判定結果」を1まとめにして扱う例。
 dataset = [['e175701', 100, 'A'], ['e175702', 70, 'C'], ['e175703', 50, 'F']]
 
@@ -391,7 +391,7 @@ for data in dataset:
     - 実行したいmainメソッドを記述しているクラスを指定する。
     - 當間の例: ``java jp.ac.uryukyu.ie.tnal.OriginalClass``
 
-```
+```java
 // 新しい型（クラス）を定義したソース：StudentScore.java
 package jp.ac.uryukyu.ie.tnal;
 
