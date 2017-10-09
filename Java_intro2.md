@@ -291,4 +291,4 @@ public class SampleSwitch {
 - switch() のカッコ内に記述できる変数の型は「整数型、文字列型、列挙型」のみ。
   - caseにはリテラルだけが使用可能。変数や式は使えない。
 
-- 演習のコード例: [week2.java](./week2.java)
+- 演習のコード例: [Week2.java](./Week2.java)
