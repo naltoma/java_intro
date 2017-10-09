@@ -1,7 +1,7 @@
-# Java入門（いろいろなデータ型、キャスト演算子、命名規則、基本ライブラリ、演算子、while文、ジャンプによる制御）
+# Java入門2（いろいろなデータ型、キャスト演算子、命名規則、基本ライブラリ、演算子、while文、ジャンプによる制御）
 
 ＜目次＞
-- Java入門（いろいろなデータ型、キャスト演算子、命名規則）
+- Java入門2（いろいろなデータ型、キャスト演算子、命名規則）
   - <a href="#c3">いろいろなデータ型（3章）</a>
     - <a href="#c3-1">データ型の種類（pp.42-49</a>）
     - <a href="#c3-2">命名規則（pp.51-55）</a>
@@ -36,6 +36,9 @@
     - 具体的な違いはp.47参照。
   - 浮動小数点型: float, double
   - 文字型: char
+    - char型（=1文字）の場合は ``char c = 'a';`` のように、**シングルクォート** で囲うこと。
+  - (文字列型: String)
+    - String型の場合は ``String str = "hoge";`` のように、**ダブルクォート** で囲うこと。
   - 論理型: boolean
 - リテラル（p.43）
   - 具体的な値（e.g., int型の値5）
@@ -56,6 +59,9 @@
     - その半分16bitがshort。
     - その倍32bitがlong。
   - char型は16bit。
+- 演習例
+  - (演習1-1) "\n"を使って改行を含む文字列を出力せよ。文字列は自由に設定して構わない。
+  - (演習1-2) trueとfalseの論理和を求め、その結果をboolean型変数として保存し、その変数を標準出力に出力せよ。なお、論理和は ``リテラル || リテラル`` という書式で求めることができる。
 
 ### <a name="c3-2">命名規則（pp.51-55）</a>
 - 識別子: クラス名、メソッド名、変数名などのプログラマが自由につけて良い名前のこと。
@@ -80,10 +86,15 @@
       - ``double b = a / 2;``
         - 上記のケースでは、aも2も整数型なので、割り算は整数型で行う。
         - 1を2で割った答えは0（整数型）。この値が浮動小数点型に自動型変換されて0.0が変数bに代入される。
-        - 浮動小数点型で処理して欲しい時にはキャストしよう。
+        - 浮動小数点型で処理して欲しい時には、演算対象を腐造小数点型と明示しよう。
+          - 明示方法1: 数値を直接コードに書いてるなら、 ``2.`` や ``2.0`` のように小数点付きで書くと浮動小数点型と解釈される。（「2.」はタイプミスではなく、正しい書き方）。
+          - 明示方法2: キャストする（後述）。
 - 自動型変換できないケース
   - ``int n = 15.432;``
     - システム側では「切り捨ててよいのか四捨五入すべきか」どうか判断できない。->コンパイルエラー（文法エラー）
+- 演習例
+  - (演習2-1) ``int a=1; double b=a/2;`` の結果、変数bの値がどのようになるのか標準出力して確認せよ。
+  - (演習2-2) 前述の変数bの値を求める際に、浮動小数点型として割り算するようにコードを修正せよ。bの値が0.5となっていることを標準出力で確認せよ。
 
 <hr>
 
@@ -109,6 +120,9 @@
   - ``float x = (float)1.234;`` // 小数点型はデフォルトでdoubleになるが、float精度(1.234f)で代入される。
 - char型とint型の間での型変換（pp.81-）
   - char型は厳密にはユニコードであるため、int型との型変換が可能。
+- 演習例
+  - (演習3-1) 10.9をint型にキャストした結果を標準出力し、確認せよ。
+  - (演習3-2) char型で'a'を保存し、その変数をint型にキャストした結果を標準出力し、確認せよ。
 
 ### <a name="c4-3">文字列の連結（pp.87-）</a>
 - 例1
@@ -121,11 +135,13 @@ String name = "太郎";
 System.out.println("こんにちは" + name + "さん");
 ```
 - Stringではない型の変数を連結する（pp.89-）
+- 演習例
+  - (演習4-1) ``String[] text = {"This", "is", "test."};`` として保存されたString配列型に対し、全要素を結合した文字列（Thisistest.）を作り、標準出力せよ。　＊できればループ処理を使おう。
 
 <hr>
 
 ## <a name="c5">基本ライブラリの利用（5章）</a>
-- APIドキュメント: [Java™ Platform, Standard Edition 8 API Specification](http://docs.oracle.com/javase/8/docs/api/)
+- APIドキュメント: [Java® Platform, Standard Edition 9 API Specification](http://docs.oracle.com/javase/9/docs/api/overview-summary.html)
 
 ### <a name="c5-1">Mathクラスのクラスメソッド（pp.104-）</a>
 - 平方根の計算
@@ -140,26 +156,7 @@ System.out.println("2.0の平方根=" + x);
 ### <a name="c5-2">Inputクラスのメソッド（pp.111-）</a>
 - 教科書にあるのは標準ライブラリではない。
   - 著者が独自に用意したライブラリ。興味のある人は使ってみよう。
-- [レポート2](https://github.com/naltoma/java_intro/blob/master/report2/report2.md)で示したSampleScanner.java（下記）は、標準ライブラリを使用した例。
-
-```
-import java.util.Scanner;
-
-public class SampleScanner {
-    public static void main(String[] args) {
-	String input; //読み込んだユーザ入力を格納するStringオブジェクトを用意。
-	Scanner in = new Scanner(System.in); // 標準入力から読み込むスキャナを用意
-	int num;
-
-	System.out.println("Please input some string: "); // 入力を促す説明文を出力。
-	input = in.nextLine(); // inputにユーザ入力を保存する。
-	num = input.length(); // 読み込んだ文字数を取得。
-
-	// 正常に読み込めたか出力して確認する。
-	System.out.println("Your input is = " + input + ", the length is " + num);
-    }
-}
-```
+- [レポート1](https://github.com/naltoma/java_intro/blob/master/report/report1_chatbot/report1.md)で示したSampleScanner.javaは、標準ライブラリを使用した例。
 
 ### <a name="c5-3">Stringクラスのメソッド（pp.122-）</a>
 - 文字列の長さ
@@ -171,7 +168,12 @@ public class SampleScanner {
   - String toLowerCase(): 英字を小文字にした文字列を返す。
   - String toUpperCase(): 英字を大文字にした文字列を返す。
   - String trim(): 先頭と末尾の空白を削除した文字列を返す。
-  - String[] split(String regex): 与えられた[正規表現regex](http://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#sum)に基づき、文字列を分解した配列を返す。
+  - String[] split(String regex): 与えられた[正規表現regex](http://docs.oracle.com/javase/9/docs/api/java/util/regex/Pattern.html#sum)に基づき、文字列を分解した配列を返す。
+    - 正規表現の例: [正規表現を使う](http://java-reference.com/java_string_regex.html)
+- 演習例
+  - 前提: ``String str = "This is test."`` というString型変数を用意する。
+    - (演習5-1) 上記strの文字列を、toLowerCaseメソッドを使って全てを小文字に変換した文字列を作成し、標準出力せよ。
+    - (演習5-2) 上記strの文字列を、splitメソッドを使い、「スペース記号」を区切り文字として分割したString配列を作成し、標準出力せよ。（出力体裁は自由で構わない）
 
 ### <a name="c5-4">Integerクラスのメソッド（教科書に無し）</a>
 - APIドキュメントからIntegerクラスを探してみよう。
@@ -187,6 +189,8 @@ public class SampleScanner {
       - ``Double.parseDouble(String s)``
       - ``Boolean.parseBoolean(String s)``
   - String toString(): Stringに変換。
+- 演習例
+  - (演習6-1) ``String data = "3.14";`` と保存されているとし、変数dataをdouble型変数に変換した結果をdouble型変数として保持し、その変数を標準出力せよ。
 
 <hr>
 
@@ -286,3 +290,5 @@ public class SampleSwitch {
 ### <a name="c11-2">switch文の規則（pp.249-）</a>
 - switch() のカッコ内に記述できる変数の型は「整数型、文字列型、列挙型」のみ。
   - caseにはリテラルだけが使用可能。変数や式は使えない。
+
+- 演習のコード例: [week2.java](./week2.java)
