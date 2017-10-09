@@ -1,3 +1,9 @@
+/*
+2週目: Java入門2
+https://github.com/naltoma/java_intro/blob/master/Java_intro2.md
+演習例のコード例
+ */
+
 public class Week2 {
     public static void main(String args[]){
 
