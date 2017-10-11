@@ -16,11 +16,14 @@
 </ul>
 
 <hr>
+
 ## <a name="abst">課題概要</a>
 「じゃんけん」をオブジェクト指向的に実装してみよう。
 
 <hr>
+
 ## <a name="details">詳細仕様</a>
+
 ### Playerクラス
 - パッケージ名
   - 自身のアカウントにすること。
@@ -88,6 +91,7 @@ public class Main {
     - 非オブジェクト指向的な実装はどうなるだろうか？　その場合と比較すると違いが出てこないだろうか？
 
 <hr>
+
 ## <a href="output_example">実行例</a>
 - 乱数を用いているため、実行する度に結果が異なる点に注意。
 
@@ -101,6 +105,7 @@ hanako's hand: 0
 ```
 
 <hr>
+
 ## <a name="hints">補足やヒント</a>
 - 乱数を用いるためには、[java.util.Random](http://docs.oracle.com/javase/8/docs/api/java/util/Random.html) か [Math.random](http://docs.oracle.com/javase/8/docs/api/java/lang/Math.html#random--) を使おう。どちらも本質的には一緒です。（これ以外を使ってもok）
 - 全てをフィールド変数を private にすること。
