@@ -39,24 +39,32 @@ git clone https://github.com/naltoma/java_intro.git
 cd java_intro/TicTacToe
 
 # コンパイル
+## ここでは2つのソースファイルがある。
+## 個別にコンパイルしても良いが、ここではまとめて「.java拡張子のファイル」を指定している。
 javac -d . *.java
+
 # 実行
 ## package名を変更したら、実行時のパスが変わることに注意。
 ## ここでは変更・修正せずにコンパイル・実行している。
-java jp/ac/uryukyu/tnal/Main
+java jp.ac.uryukyu.tnal.Main
 
 # Javadocによるドキュメント生成
-javadoc -charset "UTF-8" -private -d apidoc *.java
+## オプションの「-d apidoc」は、「apidocフォルダを作成し、そこにドキュメントを保存する」。
+## Java 8以下の場合「-charset "UTF-8"」オプションも付ける必要あり。
+## Java 9からはデフォルトがUTF-8になったため、省略している。
+## 他にどんなオプションがあるのかは「javadoc --help」で確認しよう。
+## 「--help」オプションは、多くのオープンソース・ソフトウェア(OSS)で共通するオプション。
+javadoc -private -d apidoc *.java
+
 # ドキュメントをブラウザで参照する
-open apidoc apidoc/index.html
+open apidoc/index.html
 ```
 
 ### <a name="code_javadoc">ドキュメント例</a>
 - 上記コード TicTacToe.java, Main.java をダウンロードし、下記手順でAPIドキュメントを生成してみよう。
   - ドキュメント生成方法
-    - ``javadoc -charset "UTF-8" -private -d apidoc *.java``
+    - ``javadoc -private -d apidoc *.java``
     - オプション説明
-      - -charset "UTF-8": UTF-8で記述されたソースファイルに対応。
       - -private: private指定されてるメンバもドキュメントに含める。
       - -d <directory_name>: -d で指定したディレクトリにドキュメントを生成する。
         - 上記の例では apidoc というディレクトリに生成している。
@@ -64,13 +72,16 @@ open apidoc apidoc/index.html
   - ドキュメントの参照方法
     - ``open apidoc/index.html``
 - ドキュメントの書き方
-  - クラス・フィールド変数・メソッドの前に下記書式でコメントを書く。
+  - ドキュメント例: [TicTacToe.java](https://github.com/naltoma/java_intro/blob/master/TicTacToe/TicTacToe.java)
+    - クラスについて説明を書くなら「クラスの直前」に、指定書式で書く。
+    - メソッドや変数についても各場所は同様に「直前」に書く。
+  - **クラス・フィールド変数・メソッドの前に下記書式でコメントを書く。**
     - 必ず ``/**`` という行から書き始めること。javadoc はこの行を参考にドキュメントを生成する。（``//``で書いたコメントは無視される）
-  - よく使うオプション
+  - **よく使うオプション**
     - @param パラメータ
     - @return 戻り値
-    - @deprecated 非推奨（近い将来削除対象）
-    - その他: [Javadoc Tags](http://docs.oracle.com/javase/8/docs/technotes/tools/unix/javadoc.html#CHDJGIJB)
+    - @deprecated 非推奨（「近い将来削除等の理由で使えなくなる」ということを明示するためのオプション）
+    - その他: [Javadoc Tags](https://docs.oracle.com/javase/9/tools/javadoc.htm#JSWOR-GUID-9D532574-1CDB-4D30-99F3-A308DCAEE55F)
 
 ```
 /**
@@ -125,6 +136,32 @@ open apidoc apidoc/index.html
         - **ローカル変数**: そのメソッド内でしか利用できない変数。メソッドの処理終了時にメモリ上から廃棄される。メソッド外から参照することはできない。（returnしたものだけが他メソッドから利用できる）
     - メンバ外の要素
       - **コンストラクタ**: 14.1節。オブジェクト作成時に初期化する仕組み。作成されたオブジェクトはコンストラクタを持たない。持たないので、オブジェクト生成後に利用することもできない。
+- コード例1
+  - 作業用ディレクトリ（e.g., ~/prog2/week3/）を作り、その中に以下のコード2つを保存。
+  - コンパイル: ``javac -d . *.java``
+  - 実行方法: ``java Exec``
+  - [Math.random](http://docs.oracle.com/javase/9/docs/api/java/lang/Math.html#random--)
+
+```java
+//クラス例: Dice.java
+public class Dice {
+  int val; //フィールド
+
+  //インスタンスメソッド
+  public void play(){
+    val = (int)(Math.random()*6) + 1;
+  }
+}
+```
+```java
+//mainメソッドを別のファイルで用意: Exec.java
+public class Exec {
+  public static void main(String[] args){
+    Dice dice = new Dice(); //オブジェクト生成(13.3節)
+    System.out.println(dice.val); //diceオブジェクトの利用(13.4節)
+  }
+}
+```
 
 ### <a name="object_3">オブジェクトの作り方（13.3節）</a>
 - クラス（設計図）を基に、インスタンス（オブジェクト）を作るためには ``new`` 演算子を使う。
@@ -145,6 +182,31 @@ open apidoc apidoc/index.html
 - **this** の利用
   - オブジェクト自身のフィールド変数を利用する際に使う。
   - 例: ``this.フィールド変数名``
+- コード例2
+  - コンストラクタ、オーバーロードの例。
+
+```java
+//クラス例: Dice.java
+public class Dice {
+  int val;
+  String color;
+
+  //コンストラクタ
+  public Dice(int val){
+    this.val = val;
+  }
+
+  //コンストラクタのオーバーロード(14.2節)
+  public Dice(){
+    play();
+  }
+
+  public void play(){
+    val = (int)(Math.random()*6) + 1;
+  }
+}
+```
+
 
 ### <a name="class_2">コンストラクタのオーバーロード（14.2節）</a>
 - コンストラクタは目的に応じて複数用意することができる。
@@ -169,3 +231,36 @@ open apidoc apidoc/index.html
   - private: 同一クラス内からだけアクセスできる。
   - (修飾子なし)デフォルト: 同じパッケージ内にあればアクセスできる。
   - public: 条件なし。自由にアクセスできる。
+- コード例3
+  - カプセル化の例。
+
+```java
+//クラス例: Dice.java
+public class Dice {
+  private int val; //カプセル化(14.3節)
+  private String color; //カプセル化
+
+  //コンストラクタ
+  public Dice(int val){
+    this.val = val;
+  }
+
+  //コンストラクタのオーバーロード(14.2節)
+  public Dice(){
+    play();
+  }
+
+  //カプセル化によりprivate変数への操作を用意。
+  //アクセサメソッドその1。getter+setter for val.
+  public int getVal(){ return val; }
+  public void setVal(){ this.val = val; }
+
+  //アクセサメソッドその2。getter+setter for color.
+  public int getColor(){ return color; }
+  public void setColor(){ this.color = color; }
+
+  public void play(){
+    val = (int)(Math.random()*6) + 1;
+  }
+}
+```
