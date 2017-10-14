@@ -42,8 +42,11 @@
     - outディレクトリ以下に、動作確認用のバイトコードが置かれている。
     - srcディレクトリ以下に、下記3つのソースファイルがある。
       - (1)チャットボットのためのパッケージ(Chatbot.java, ReplyPattern.java)
+        - これらは「jp.ac.uryukyu.ie.tnal」パッケージとして用意してある。
         - Chatbot.javaは前述箇所がコード削除済み。
       - (2)チャットボットを実際に起動するためのmainメソッドを含むソース(Main.java)
+        - Main.javaはパッケージ指定がない点に注意。
+        - 「ChatbotクラスやReplyPatternクラスを外部パッケージとして利用（import）する」ことを想定しつつ、その外部パッケージ開発をしているという状態。（のつもりで課題に取り組もう）
 ```java
 ./git/ #省略
 ./out
@@ -75,7 +78,7 @@
 - 前提
   - Main.java, ReplyPattern.java は編集する必要はない。
   - 編集が必要なのは Chatbot.java のみ。
-- **Step 1: とりあえず動く状態（コンパイル通り、動作できる状態）にする。**
+- **Step 1: とりあえず動く状態（コンパイルが通り、動作確認できる状態）にする。**
   - Step 1-1: 最低限のソース修正。
     - コンストラクタはとりあえず空のままでも良い。
     - searchPatternメソッドは、戻り値がint型である。何でも良いが、ここでは ``0`` を返すように1行追加しよう。
@@ -95,7 +98,7 @@ Exception in thread "main" java.lang.NullPointerException
 ```
 - **Step 2: エラーが出ない程度の最小限の編集。** （ここまで授業で補足）
   - Step 2-1: コンストラクタを少し編集する。
-    - Chatbotのコンストラクタ2を以下のように編集してみよう。
+    - Chatbotのコンストラクタ2を以下のように編集してみよう。（コメント文は編集箇所を明示するために残しているが、削除ok）
 
 ```java
 public Chatbot(String botname, String[] dataset){
@@ -139,7 +142,7 @@ public Chatbot(String botname, String[] dataset){
 
 <hr>
 
-## <a href="output_example">実行例</a>
+## <a name="output_example">実行例</a>
 
 ```java
 oct:tnal% java Main
@@ -185,6 +188,7 @@ oct:tnal%
   - 課題説明（概要のみでOK）
   - **ソースコード解説**
     - コンストラクタ2、もしくはsearchPatternメソッドのいずれかについてコードを掲載し、解説すること。
+    - おまけ（カプセル化）にも取り組んだ場合には、「フィールド変数、アクセサメソッド」以外の部分で修正した箇所があれば、そこについてコードを掲載し、解説すると良いかな。
   - **結果**
     - greeting, こんにちは, other, bye. の4パターンに対応してることを確認できる結果を掲載すること。
   - **考察**
@@ -200,7 +204,8 @@ oct:tnal%
 
 ## <a name="submit">提出方法</a>
 - 提出物は「レポート」、「作成したソースファイル」の2点である。
-  - ソースファイルは、「exercise_chatbot2」
+  - ソースファイルは、Chatbot.java, Main.java を提出すること。ディレクトリ構造は無視して構わない。
+  - おまけに取り組んだ場合には、ReplyPattern.java も提出すること。
 - レポートは電子ファイルで提出するものとする。
 - 提出先:
   - 「<a href="https://drive.google.com/a/ie.u-ryukyu.ac.jp/folderview?id=0B8oAeomiuJo-OFUxYjNyT083OGM&usp=sharing">Google ドキュメント</a>」のreport2。
