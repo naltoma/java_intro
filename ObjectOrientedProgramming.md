@@ -256,7 +256,7 @@ public class Dice {
   public void setVal(int val){ this.val = val; }
 
   //アクセサメソッドその2。getter+setter for color.
-  public int getColor(){ return color; }
+  public String getColor(){ return color; }
   public void setColor(String color){ this.color = color; }
 
   public void play(){
