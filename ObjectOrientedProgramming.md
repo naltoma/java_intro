@@ -253,11 +253,11 @@ public class Dice {
   //カプセル化によりprivate変数への操作を用意。
   //アクセサメソッドその1。getter+setter for val.
   public int getVal(){ return val; }
-  public void setVal(){ this.val = val; }
+  public void setVal(int val){ this.val = val; }
 
   //アクセサメソッドその2。getter+setter for color.
   public int getColor(){ return color; }
-  public void setColor(){ this.color = color; }
+  public void setColor(String color){ this.color = color; }
 
   public void play(){
     val = (int)(Math.random()*6) + 1;
