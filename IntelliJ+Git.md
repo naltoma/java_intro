@@ -10,7 +10,7 @@
 <hr>
 
 ## <a name="review">復習: (前期資料) Gitによるバージョン管理入門</a>
-- [Gitによるバージョン管理入門](https://ie.u-ryukyu.ac.jp/~tnal/2016/prog1/Git.html)
+- [Gitによるバージョン管理入門](https://github.com/naltoma/python_intro/blob/master/Git.md)
 
 <hr>
 
