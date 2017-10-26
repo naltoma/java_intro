@@ -64,39 +64,43 @@ Host github.com
 
 <hr>
 
+（2017年度は、下記作業を別資料でやりますので飛ばして下さい）
+
 ## <a name="github-project-push">PC側で作業してる既存プロジェクトを、上記で作成したプロジェクトに登録する。</a>
-- IntelliJで作成したプロジェクトのウィンドウに戻る。
-  - VCSメニューから「Enable Version Control Integration」を選択。
-    - 「Git」を選択し、OK。
+- Step 1: IntelliJで作業中のプロジェクトを、GitHubリポジトリに登録する。
+  - IntelliJプロジェクトにVCSを設定。（プロジェクト毎に1回だけ実行）
+    - VCS = Version Control System（バージョン管理システム）のこと。
+    - IntelliJで作成したプロジェクトのウィンドウに戻る。
+      - VCSメニューから「Enable Version Control Integration」を選択。
+        - 「Git」を選択し、OK。
+- Step 2: VCS管理対象を指定して、commit。（ローカルリポジトリに作業記録を残す）
+  - 作業状況をセーブしたいタイミングで、その都度実行するステップ。
   - VCSメニューから「Git -> + Add」を選択。
+    - 「Do you want to add the following file to Git?  /Users/tnal/IdeaProjects/ExampleUnitTest/.idea/vcs.xml」と聞かれるが、Noを選択。（IntelliJ専用のファイルなので、不要）
   - VCSメニューから「Git -> Commit File...」を選択。
-    - 登録したいファイルがすべて選択されていることを確認。
-      - 今回は、以下のファイルを一通り選択しよう。
-        - src/main/jp.ac.uryukyu.ie.tnal/Enemy.java
-        - src/main/jp.ac.uryukyu.ie.tnal/Hero.java
-        - src/main/jp.ac.uryukyu.ie.tnal/Main.java
-    - 上記3つのファイルを選択した状態で、commit message を記入し、「Commit」をクリック。
+    - 登録したいファイル（通常はソースコードや関連ドキュメント）がすべて選択されていることを確認。
+    - 登録したいファイルを選択した状態で、commit message を記入し、「Commit」をクリック。
       - コミットメッセージは、ユニットテスト用の初期コードであることが分かるように書こう。
   - Code Analysis が起動するので、「Review」をクリック。
     - 自動コードチェッカ。不必要にpublicにしてないか、テンプレートのままになっていないか等の簡易的なチェックをしてくれる。
-    - 普段なら、ここで指摘された事項は一通り無くなるまで対応しよう。今回は一つだけ対応することにして、残りは見なかったことにしよう。
-      - 1つ目の指摘事項は「Main.javaの1行目が Default File template」らしい。その指摘項目をダブルクリックすると該当箇所に移動してくれる。
-      - 該当箇所は、テンプレートが自動生成したコメント行。今は不要なので削除することにしよう。
-      - 該当コメントを削除したら、もう一度 Git -> Commit File -> Commit。そこから Review を確認。
-        - 対応箇所に関する指摘が消えているはずだ。この状態でリポジトリに登録しよう。
-          - もう一度 Git -> Commit File -> Commit。
-          - Commit message を記入し、Commit。
-          - 今度は Review ではなく、Commit を選択。
-            - エラーが出なければ、「* files committed」といった出力が出るはず。これでPC側のリポジトリに作業記録を残すことができた。ただし、この時点では「IntelliJが作成している、PC側のフォルダに登録しているだけ」であることに注意。
-  - 学科サーバgitlabのリポジトリに登録する。
-    - gitlab上の作業用URLを確認する。
-      - ブラウザに戻り、作成したExampleUnitTestプロジェクトのページを開く。
-      - HTTPSをクリックしてSSHに変更。
-        - 右欄をクリックして、コピー。これがリポジトリ作業用URL。
-    - IntelliJに戻る。
-      - VCS -> Git -> Pushを選択。
-      - Define remote をクリック。
-      - URLに、学科サーバに用意したリポジトリの作業用URLを貼り付けよう。
-      - 貼り付けたら、OK。
-      - Push。
-      - Push successfulと出力されたら、Githubリポジトリへのpushが成功。ブラウザに戻り、どのようにリポジトリが見えるか確認してみよう。
+    - 普段なら、ここで指摘された事項は一通り無くなるまで対応しよう。
+      - 問題なければ、もう一度 Git -> Commit File -> Commit。
+      - Commit message を記入し、Commit。
+        - 今度は Review ではなく、Commit を選択。
+          - エラーが出なければ、「* files committed」といった出力が出るはず。これでPC側のリポジトリに作業記録を残すことができた。ただし、この時点では「IntelliJが作成している、PC側のフォルダに登録しているだけ」であることに注意。
+- Step 3: ローカルリポジトリの作業状況を、GitHubリポジトリに登録。
+  - GitHub リポジトリのページを開き、Git URLをコピー。
+  - IntelliJに戻る。
+    - VCS -> Git -> Pushを選択。
+    - Define remote をクリック。
+    - URLに、GitHubに用意したリポジトリの作業用URL（Git URL）を貼り付けよう。
+    - 貼り付けたら、OK。
+    - Push。
+    - Push successfulと出力されたら、Githubリポジトリへのpushが成功。GitHubページに戻り、ページを再読込みしよう。どのようにリポジトリが見えるか確認してみよう。
+- ここまでの作業を整理。
+  - 開発中のソースコードをGitでバージョン管理する。これだけならPC内（ローカル）で作業してよい。前期はそうした。
+  - 一方で、ペアプロなどファイルを複数人で共有しながら作業したい場合や、リポジトリを公開したい場合には、ベアリポジトリを共有しやすい場所で管理したい。このような目的で使えるのが GitHub。
+  - GitHubリポジトリの作成は、プロジェクト毎に作成する。公開プロジェクトであれば無料で無制限に作成可能。
+  - IntelliJ側の設定（Git設定, Git URL設定）も、プロジェクト毎にやる。
+  - commitは、作業状況を「新しいバージョン」として記録したい単位でやる。記録しておけば、そのバージョンに戻ることができる。ただしこの時点ではPC内でしか記録していない点に注意。
+  - pushは、ベアリポジトリに記録する。ベアリポジトリとして GitHubリポジトリを指定すると、そこに記録を残し、公開することができる。
