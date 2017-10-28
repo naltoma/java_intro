@@ -91,12 +91,11 @@ oct:tnal% cat ~/.gitconfig
     - 作成したリポジトリを利用するための **Git URL** を何処かにメモしておこう。後で使います。
       - Git URLの例: https://github.com/naltoma/test.git
       - 上記のように、最後に .git が付いてるURLがGitURL。
-- Step 3: IntelliJで作業中のプロジェクトを、GitHubリポジトリに登録する。
-  - Step 3-1: IntelliJプロジェクトにVCSを設定。（プロジェクト毎に1回だけ実行）
-    - VCS = Version Control System（バージョン管理システム）のこと。
-    - IntelliJで作成したプロジェクトのウィンドウに戻る。
-      - VCSメニューから「Enable Version Control Integration」を選択。
-        - 「Git」を選択し、OK。
+- Step 3: IntelliJで作業中のプロジェクトに、VCSを設定する。
+  - VCS = Version Control System（バージョン管理システム）のこと。
+  - IntelliJで作成したプロジェクトのウィンドウに戻る。
+    - VCSメニューから「Enable Version Control Integration」を選択。
+      - 「Git」を選択し、OK。
 - Step 4: VCS管理対象を指定して、commit。（ローカルリポジトリに作業記録を残す）
   - 作業状況をセーブしたいタイミングで、その都度実行するステップ。
   - VCSメニューから「Git -> + Add」を選択。
