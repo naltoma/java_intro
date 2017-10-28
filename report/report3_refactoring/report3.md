@@ -1,4 +1,4 @@
-# 課題レポート4: リファクタリングを通してユニットテストとバージョン管理に慣れよう
+# 課題レポート2: リファクタリングを通してユニットテストとバージョン管理に慣れよう
 
 - 前期からの変更点
   - 課題説明は「課題概要」のみで十分です。
@@ -13,25 +13,27 @@
   - <a href="#details_step2">ステップ2: EnemyクラスとHeroクラスの重複をどうにかしたい。</a>
   - <a href="#details_step3">ステップ3: カプセル化しよう。</a>
 - <a href="#output_example">実行例</a>
-- <a href="#report">取り組み方</a>
+- <a href="#report">取り組み方、レポートに含めるべき項目</a>
 - <a href="#submit">提出方法</a>
 
 <hr>
+
 ## <a name="abst">課題概要</a>
-7回目の授業で利用したコード例[ExampleUnitTest](https://github.com/naltoma/ExampleUnitTest)は、コードの書き方があまりヨロシクない。ユニットテストとバージョン管理システムを使いながら、一歩ずつリファクタリングしてみよう。
+5回目の授業で利用したコード例[ExampleUnitTest](https://github.com/naltoma/ExampleUnitTest)は、コードの書き方があまりヨロシクない。ユニットテストとバージョン管理システムを使いながら、一歩ずつリファクタリングしてみよう。
 
 <hr>
+
 ## <a name="details">詳細仕様</a>
 ### <a name="details_step0">ステップ0: コードの準備。</a>
-- IntelliJで新規プロジェクトを作成せよ。プロジェクト名は「Report4」とする。
-- [サンプルコードの準備](https://github.com/naltoma/java_intro/blob/master/IntelliJ%2BJunit4.md#pre)を参考に、Hero.java, Enemy.java, Main.java, EnemyTest.java の4つを適切に配置し、リソース設定せよ。
+- IntelliJで新規プロジェクトを作成せよ。プロジェクト名は「Report3」とする。
+- [サンプルコードの準備](https://github.com/naltoma/java_intro/blob/master/IntelliJ%2BJUnit.md#pre)を参考に、Hero.java, Enemy.java, Main.java, EnemyTest.java の4つを適切に配置し、リソース設定せよ。
   - pacakge名は自身のものに修正すること。
 - Main.javaとEnemyTest.javaを実行し、動作することを確認できたら commit & pushせよ。
-  - push先は、GitHubは学科Gitlabサーバのいずれかとする。
+  - push先は、GitHubとする。
   - これで何か問題が起きても、この時点のコードに戻ることができるようになる。
   - EnemyTest.javaのテストは、この時点では失敗して良い。テストが機能していることを確認しよう。
 - レポート報告事項
-  - ステップ0に関しては、pushしたリポジトリURL（作業用URL）を報告するだけで良い。
+  - ステップ0に関しては、pushしたリポジトリURL（Git URL）を報告するだけで良い。
 
 <hr>
 
@@ -44,29 +46,35 @@
   - EnemyTest.attack()の差分コードを以下の手順で掲載し、どのように修正したのか解説せよ。
     - 差分コードの出力手順
       - ターミナルでプロジェクトを保存しているディレクトリに移動する。（デフォルトなら ~/IdeaProjects/Report4/ 以下にあるはず）
-      - ``git log -p -1`` を実行し、直近1つのコミットでの変更点を出力させる。この実行結果全体をレポートに含めよう。（このコマンドの意味は[前期資料](https://ie.u-ryukyu.ac.jp/~tnal/2016/prog1/Git.html#5)で確認しよう。）
+      - ``git log -p -1`` を実行し、直近1つのコミットでの変更点を出力させる。この実行結果全体をレポートに含めよう。（このコマンドの意味は[前期資料](https://github.com/naltoma/python_intro/blob/master/Git.md)で確認しよう。）
   - 想定: 数行の追加で終わるはず。
 
 <hr>
 
 ### <a name="details_step2">ステップ2: EnemyクラスとHeroクラスの重複をどうにかしたい。</a>
-- EnemyクラスとHeroクラスを眺めると、殆どが同一コードであることに気づくはずだ。先程 Enemy.attack() を修正したが、同じ修正コードを Hero.java にも追加記述するのはあまりヨロシクない。（DRY原則）
-  - いろんな対応方法が考えられるが、ここでは以下のように修正してみよう。
-    - 両方に共通するLivingThingクラスを新規作成しよう。
-      - フィールド変数として下記4項目を持つものとする。
-        - String name;
-        - int hitPoint;
-        - int attack;
-        - boolean dead;
-      - コンストラクタとしてname, hitPoint, attackの3つを引数に取り、Enemy,Heroと同等の処理を実行しよう。（dead変数の初期化も忘れないようにしよう）
-      - 下記メソッドを作成。
-        - public boolean isDead()
-        - public String getName()
-        - public void attack(LivingThing opponent)
-          - Enemyクラスではheroを攻撃、Heroクラスではenemyを攻撃するようにしていたが、共通クラスとして作成している本クラスを対象に攻撃するように変更しよう。
-        - public void wounded(int damage)
-    - LivingThingを継承して、EnemyクラスとHeroクラスを設計し直そう。
-      - EnemyクラスとHeroクラスとも、現時点では異なる実装はないため、フィールド変数とメソッドは不要である。コンストラクタだけ用意してあげよう。（superで親クラスのコンストラクタを呼び出そう）
+- EnemyクラスとHeroクラスを眺めると、殆どが同一コードであることに気づくはずだ。先程 Enemy.attack() を修正したが、同じ修正コードを Hero.java にも追加記述するのはあまりヨロシクない。
+  - 例えば、「同じ修正内容を複数箇所に適用する」ことは可能だが、システムが大規模になるほど「適用すべき箇所」が増え、手間が増えるだけでなく、手作業のためその都度新たなバグ混入の可能性がある。これらの手間を避けるため、なるべく「同じ修正ならば、一箇所の修正で済ます」ようにコードの重複を避けることを考えた方が良い。（DRY原則）
+- いろんな対応方法が考えられるが、ここでは以下のように修正してみよう。
+  - 両方に共通するLivingThingクラスを新規作成しよう。
+    - フィールド変数として下記4項目を持つものとする。
+      - String name;
+      - int hitPoint;
+      - int attack;
+      - boolean dead;
+    - コンストラクタとしてname, hitPoint, attackの3つを引数に取り、Enemy,Heroと同等の処理を実行しよう。（dead変数の初期化も忘れないようにしよう）
+    - 下記メソッドを作成。
+      - public boolean isDead()
+      - public String getName()
+      - public void attack(LivingThing opponent)
+        - Enemyクラスではheroを攻撃、Heroクラスではenemyを攻撃するようにしていたが、共通クラスとして作成している本クラスを対象に攻撃するように変更しよう。
+      - public void wounded(int damage)
+        - 出力メッセージがEnemy, Heroとで異なるが、LivingThingクラスでは「%sは倒れた。」に統一して実装しよう。
+  - LivingThingを継承して、EnemyクラスとHeroクラスを実装し直そう。
+    - EnemyクラスとHeroクラスとも、現時点では異なる変数はないため、フィールド変数は不要である。
+    - コンストラクタを用意しよう。（superで親クラスのコンストラクタを呼び出そう）
+    - メソッドは、、、
+      - isDead(), getName(), attack()については同一実装となるため、LivingThing クラスに任せよう。（Enemy, Heroクラス側で実装は不要なので、削除）。
+      - wounded() は、処理後の出力メッセージが異なる。ここでは、Enemyクラスでは「モンスター%sは倒れた。」、Heroクラスでは「勇者%sは道半ばで力尽きてしまった。」と出力するように、wounded()メソッドをオーバーロード(Overload)しよう。
 - 確認項目
   - LivingThingクラス、それらを継承して作成し直したEnemyクラスとHeroクラスを修正し終えたら、Main.javaを実行してみよう。こちらは特に編集不要で、元の処理を再現できているはずである。また、attack()を親クラスで修正済みのため、enemy死亡後に攻撃してしまうことは無くなったはずである。
     - 同様に、今回は確認していないが、元のHeroクラスでも「死亡後に攻撃できる」状態だった。しかし修正後は、親クラスで修正済みのため、修正後のHeroクラスは死亡後攻撃はできなくなっているはずだ。
@@ -87,8 +95,21 @@
 - レポート報告事項
   - EnemyTest.attack() のコードを掲載し、どう修正したのか説明せよ。
 
+<hr>
+
+<!--
+### <a name="details_additonal_step">おまけ: wounded()のコード重複をどうにかしたい</a>
+- これはおまけ課題です。やらなくてもOK。
+- 問題意図
+  - ステップ3終了時点では、以下のようなコードになっているはずだ。
+    - LivingThing.wounded(): ダメージ処理し、生死判定＆処理した上で、死亡したらメッセージ「%sは倒れた。」を出力。
+    - Enemy.wounded(): ダメージ処理し、生死判定＆処理した上で、死亡したらメッセージ「モンスター%sは倒れた。」を出力。（Overload）
+    - Hero.wounded(): ダメージ処理し、生死判定＆処理した上で、死亡したらメッセージ「勇者%sは道半ばで力尽きてしまった。」を出力。（Overload）
+  -
 
 <hr>
+-->
+
 ## <a name="output_example">実行例</a>
 - 修正前: ExampleUnitTest での実行例。
   - 修正前は、スライムが倒れた後も攻撃している。
@@ -107,7 +128,7 @@
 戦闘終了
 ```
 
-- レポート4指定通りに修正後の実行例。
+- 修正後: レポート3指定通りに修正後の実行例。
   - スライムが倒れた後に攻撃してない点に注意。
 
 ```
@@ -141,26 +162,32 @@
 
 <hr>
 
-## <a name="report">取り組み方</a>
+## <a name="report">取り組み方、レポートに含めるべき項目</a>
 - ペアや友人らと話し合って取り組んで構わないが、コード解説を加えるなど「自分自身の報告書」となるように取り組むこと。試して分かったこと、自身で解決できなかった部分等についてどう取り組んだか、といった過程がわかるように示すこと。（考えを図表や文章を駆使して表現して報告する練習です）
 - レポート作成は好きなツール（ソフトウェア）を使って構わない。ただし下記を含めること。
   - タイトル
-    - 今回は「**プログラミング2、レポート課題4: 「リファクタリングを通してユニットテストとバージョン管理に慣れよう」**」。
+    - 今回は「**プログラミング2、レポート課題3: 「リファクタリングを通してユニットテストとバージョン管理に慣れよう」**」。
   - 提出日: yyyy-mm-dd
   - 報告者: 学籍番号、氏名
     - 複数人で相談しながらやった場合、相談者らを「**協力者: 学籍番号、氏名**」として示そう。
   - 課題説明（概要のみでOK）
-  - 結果と考察
-    - **課題への取り組みを通し、課題の意義、課題から分かったこと、今後の展望などを述べる。失敗やつまづきがあれば、それらについての失敗分析を含めること。**
-    - 参考リンク: [実験レポートの書き方](http://www.report.gusoku.net/jikken/jikkenreport.html)
+  - **Step 0について**
+    - pushしたリポジトリURL（Git URL）を報告すること。
+  - **Step 1について**
+    - 指定手順で得られる EnemyTest.attack()の差分コードを掲載し、どのように修正したのか解説せよ。
+  - **Step 2について**
+    - コード掲載は不要である。今回のコード修正を通して、気づいたことを報告せよ。
+  - **Step 3について**
+    - EnemyTest.attack() のコードを掲載し、どう修正したのか説明せよ。
   - その他
     - 通常は感想等をレポートには含めませんが、練習なので課題に取り組みながら何か感じたこと、悩んでいること等、書きたいことがあれば自由に書いてください。（なければ省略OK）
 
 <hr>
 
 ## <a name="submit">提出方法</a>
-- 提出物は「レポート」、「作成したソースファイル」の2点である。
+- 提出物は「レポート」の1点である。
+  - ソースファイルの提出は不要。（GitHubで確認します）
 - レポートは電子ファイルで提出するものとする。
 - 提出先:
-  - 「<a href="https://drive.google.com/a/ie.u-ryukyu.ac.jp/folderview?id=0B8oAeomiuJo-OFUxYjNyT083OGM&usp=sharing">Google ドキュメント</a>」のreport4。
+  - Google ドキュメントのreport3。
 - 締切: 調整中。
