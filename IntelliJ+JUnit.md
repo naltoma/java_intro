@@ -89,7 +89,7 @@ oct:tnal% cat ~/.gitconfig
     - 参考: [Gitによるバージョン管理 on IntelliJ](https://github.com/naltoma/java_intro/blob/master/IntelliJ%2BGit.md)
     - リポジトリ名は「ExampleUnitTest」にしよう。
     - 作成したリポジトリを利用するための **Git URL** を何処かにメモしておこう。後で使います。
-      - Git URLの例: https://github.com/naltoma/test.git
+      - Git URLの例: https://github.com/naltoma/ExampleUnitTest.git
       - 上記のように、最後に .git が付いてるURLがGitURL。
 - Step 3: IntelliJで作業中のプロジェクトに、VCSを設定する。
   - VCS = Version Control System（バージョン管理システム）のこと。
