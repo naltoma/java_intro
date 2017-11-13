@@ -12,23 +12,23 @@
 
 ## <a name="abst">例外クラスの概要</a>
 - 標準APIで提供されてる例外クラスの継承ツリー（一部）
-  - [Throwable](http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html): 何らかの例外的状況
-    - (サブクラス) [Error](http://docs.oracle.com/javase/8/docs/api/java/lang/Error.html): 回復見込みがない致命的な状況
+  - [Throwable](http://docs.oracle.com/javase/9/docs/api/java/lang/Throwable.html): 何らかの例外的状況
+    - (サブクラス) [Error](http://docs.oracle.com/javase/9/docs/api/java/lang/Error.html): 回復見込みがない致命的な状況
       - e.g., OutOfMemoryError
       - **catchする必要がない**（catchしても良いが、通常はここから回復する手段はないことが多い）
-    - (サブクラス) [Exception](http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html): 回復見込みがある状況
+    - (サブクラス) [Exception](http://docs.oracle.com/javase/9/docs/api/java/lang/Exception.html): 回復見込みがある状況
       - e.g., IOException
       - **catchすべき例外**。例外発生を想定してコードを記述することが望ましい or 記述することを強制していることがある。
-      - (サブクラス) [RuntimeException](http://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html): 回復が必須ではない状況
+      - (サブクラス) [RuntimeException](http://docs.oracle.com/javase/9/docs/api/java/lang/RuntimeException.html): 回復が必須ではない状況
         - e.g., IndexOutOfBoundsException
         - **catchしても良いが、細かい例外**。例外処理するというよりは、例外が起きないようにユニットテスト等の形でチェックすることが望ましい。
 - 「どのメソッドを呼び出したら、どのような例外が発生する可能性があるか」を予め知っておく必要がある。
-  - これらの情報は[APIリファレンス](http://docs.oracle.com/javase/8/docs/api/)に掲載されている。
+  - これらの情報は[APIリファレンス](https://docs.oracle.com/javase/9/docs/api/overview-summary.html)に掲載されている。
 
 <hr>
 
 ## <a name="FileWriter1">java.io.FileWriterクラスの例</a>
-- [java.io.FileWriter](http://docs.oracle.com/javase/8/docs/api/java/io/FileWriter.html#FileWriter-java.io.File-)
+- [java.io.FileWriter](http://docs.oracle.com/javase/9/docs/api/java/io/FileWriter.html#FileWriter-java.io.File-)
   - コンストラクタを参照すると、IOExceptionがthrowsされることが明示されている。
     - throws宣言 = 宣言されてる例外が発生する可能性を示唆している。ただし、示唆するだけで例外発生時の対応は記述していない（呼び出し元で記述することを強制する）。
     - つまりthrows宣言されてる場合、このクラスを利用する側（呼び出し元）で try-catch する必要がある。
@@ -80,9 +80,10 @@ try {
 <hr>
 
 ## <a name="finally">後片付け処理があるケース</a>
+- tryブロック処理中に例外が発生したかどうかに関わらず、実行したい処理がある場合にはfinally構文を使う。
+  - 必ず書くべき構文ではない。後片付けがある場合に使う。
 - 状況例
   - File I/Oや、データベース接続、ネットワーク接続等のように、途中で例外が起きたとしても「JVMが終了する前に必ず接続を正常切断させたい」ケース。
-    - こういう場合には finally 構文を記述する。
 
 ```
 try {
@@ -98,7 +99,20 @@ try {
 
 ## <a name="exception_instance">例外インスタンスの例</a>
 - 例外インスタンスは、``catch (IOException e)`` のようにtry-catch構文にて生成することができる。
-  - 例外インスタンスが持つ情報の例: [Throwable](http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html)
+  - 例外インスタンスが持つ情報の例: [Throwable](http://docs.oracle.com/javase/9/docs/api/java/lang/Throwable.html)
     - ``String getMessage()``: Returns the detail message string of this throwable.
     - ``void printStackTrace()``: Prints this throwable and its backtrace to the standard error stream.
     - ``String toString()``: Returns a short description of this throwable.
+- getMessage() を眺めてみよう。
+  - step 1: output.txtのパーミッションを変更し、「onwer自身が読み書きできない」ようにする。
+  - step 2: Exception2を実行してみる。
+```
+oct:tnal% ls -l output.txt
+-rw-r--r--  1 tnal  staff  12 11 13 10:56 output.txt
+oct:tnal% chmod u-rw output.txt
+oct:tnal% ls -l output.txt
+----r--r--  1 tnal  staff  12 11 13 10:56 output.txt
+oct:tnal% java Exception2
+output.txt (Permission denied)
+oct:tnal%
+```
