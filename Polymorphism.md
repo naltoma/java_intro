@@ -20,9 +20,14 @@
 - オーバーライド概要(pp.426)
   - 継承したメソッドの機能を変更（≒上書き）すること。
     - OverloadとOverrideの違い: [コード例:ExamplePolymorphism](https://github.com/naltoma/ExamplePolymorphism)
+      - Overload: 引数や戻り値が異なる同名メソッド、同名コンストラクタを実装すること。
+        - e.g., [PrintStream.println](https://docs.oracle.com/javase/9/docs/api/java/lang/System.html#out)
+      - Override: 親クラスのメソッドやコンストラクタを、子クラスで上書きすること。
+        - 上書きするので、メソッド名、引数の型や数、引数の順番、戻り値の型は同一にする必要がある。
+        - @Override アノテーションを付けて実装すると、上書きのつもりで実装してる際に、誤って引数の順番が違ってた場合等に指摘してくれる。
     - どういう時に変更するのか？
       - 継承しただけでは役に立たない状態のメソッドや、変更しなければコンパイルエラーになるメソッドがある場合。（大まかな仕組みのみをスーパークラスで作り、機能詳細はサブクラスに一任するケース）
-        - e.g., [java.util.AbstractList](http://docs.oracle.com/javase/8/docs/api/java/util/AbstractList.html) は、「public abstract class AbstractList<E>」として宣言されている。abstractなclassは、実装していないメソッドがあることを示しており、継承先で実装する必要がある。
+        - e.g., [java.util.AbstractList](http://docs.oracle.com/javase/9/docs/api/java/util/AbstractList.html) は、「public abstract class AbstractList<E>」として宣言されている。abstractなclassは、実装していないメソッドがあることを示しており、継承先で実装する必要がある。
           - 未実装メソッドの例：「abstract E	get(int index)」
     - どう実現するのか？
       - 同じ名前のメソッドを継承先で作る。その際には「メソッドのアクセス修飾子、戻り値型、引数の型・数・並び等」は原則として同じである必要がある。（これらが異なると、オーバーロード(p.276)になる）
@@ -30,7 +35,7 @@
         - アクセス修飾子は、より広範囲の広いものにだけ変更しても良い。
           - 上記の未実装 AbstractList.get() についてオーバーライドするなら、継承先で「E get(int index)」メソッドを実装する必要がある。
 - コード例(pp.426-)
-  - [Object.toString()](http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#toString--) をオーバーライドしてみる。
+  - [Object.toString()](http://docs.oracle.com/javase/9/docs/api/java/lang/Object.html#toString--) をオーバーライドしてみる。
   - toString()メソッドがあると、System.out.println()のような出力メソッドが自動で呼び出してくれる。
   - アノテーション
     - @Override
@@ -54,8 +59,8 @@
           - 用意した全オブジェクトに対して「1秒間動く move()メソッド」を実行させる際に、ポリモーフィズムがない状況だと「クラス毎にmove()メソッドを呼び出す」必要がある。これは、クラス数が多いと大変だし、無駄でもある。
             - ポリモーフィズムがある状況だと、全クラスのスーパークラスが持つメソッド Vehicle.move() を実行するだけで良い。
 
-```
-# 擬似コード1（ポリモーフィズムがない状況）
+```java
+// 擬似コード1（ポリモーフィズムがない状況）
 Bus[] buses = new Bus[3];
 Bus[0] = new Bus();
 Bus[1] = new Bus();
@@ -73,7 +78,7 @@ for(DumpCar dumpCar: dumpCars){
 // 以下、サブクラス毎に同じfor文が続く。
 
 
-# 擬似コード2（ポリモーフィズムがある状況）
+// 擬似コード2（ポリモーフィズムがある状況）
 Vehicle[] vehicles = new Vehicle[5];
 vehicles[0] = new Bus();
 vehicles[1] = new Bus();
