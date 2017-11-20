@@ -13,6 +13,9 @@
       - ``変数名 instanceof 型名``
         - instanceof演算子は、指定した型名やそのサブクラスに該当する場合でもtrueを返す。
         - コード例: pp.424
+  - [Object.getClass()](https://docs.oracle.com/javase/9/docs/api/java/lang/Object.html#getClass--)による **実行時のクラス** 確認（Returns **the runtime class of this Object**. ）。
+    - Objectクラスは、全てのクラスの親クラス（教科書, pp.401-）。クラス型なら全てgetClass()で「実行時のクラス」を確認できる。
+    - int, double等の「基本データ型」は、クラスとしては実装されていないため、getClass()で確認できない。
 
 <hr>
 
