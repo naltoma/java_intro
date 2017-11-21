@@ -81,7 +81,8 @@ Hanako's hand: 2
 ./src/jp/ac/uryukyu/ie/ex2/pair00/Player.java #これを実装する
 ```
   - Mainクラス（mainメソッドを含むクラス）
-    - 「jp.ac.uryukyu.ie.ex2.pair00」に含まれるクラス（今回はPlayerクラス）をimportし、
+    - 上記コード例を参照。
+    - パッケージ内のペア番号は適宜修正すること。
   - Playerクラス
     - パッケージとして ``jp.ac.uryukyu.ie.ex2.pair00`` を指定するものとする。
     - フィールド変数として、名前(String name)と手(int hand)を保存するための変数2つを持つものとする。アクセス制限なしの public とする。
