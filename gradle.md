@@ -40,7 +40,6 @@ gradle -v
     - IntelliJ で新規プロジェクト作成。作成時に「Gradle」を選択。Additional Libraries にJavaが含まれていることを確認。Next.
     - GroupID/ArtifactId を GradleExample に。Next.
     - オプション設定
-      - //？「Create directories for empty content roots automatically」にチェック。
       - 「Create separate module per source set」にチェック。
       - 「Use default gradle wrapper (recommended)」にチェック。
       - 上記以外はチェックを外す。
