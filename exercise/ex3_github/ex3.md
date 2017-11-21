@@ -43,6 +43,16 @@
   - 作成した Git URL を覚えておこう。
 - Step 2: PCに作業用リポジトリを用意しよう。
   - **ターミナル上で** git コマンドを使用し、先程用意したベアリポジトリを複製しよう。やり方はGitHubのベアリポジトリを作成した際に出力される画面を参照すること。
+    - README.mdを作成して、登録するコマンド例（下記）が書かれているはず。これをそのまま実行してみよう。なお、以下の例ではあくまでも當間の例なので、當間のGit URLが記載されている。ユーザ（リポジトリ）毎に異なるので、自身のGitHubベアリポジトリを参照しよう。
+```
+echo "# prog2_ex3" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/naltoma/prog2_ex3.git
+git push -u origin master
+```
+
 - Step 3: 作業用リポジトリに移動し、``ls -a`` の結果を確認せよ。
   - Gitがバージョン管理のために使用する .git ディレクトリがあることを確認しよう。
 - 提出方法
