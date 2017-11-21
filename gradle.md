@@ -27,7 +27,7 @@
 brew install gradle
 rehash
 gradle -v
-# -> Gradle 3.2.1 と出力されたらok
+# -> Gradle のバージョンが出力されたらok（2017年11月現在では Gradle 4.3.1）
 ```
 
 <hr>
@@ -40,18 +40,20 @@ gradle -v
     - IntelliJ で新規プロジェクト作成。作成時に「Gradle」を選択。Additional Libraries にJavaが含まれていることを確認。Next.
     - GroupID/ArtifactId を GradleExample に。Next.
     - オプション設定
-      - 「Create directories for empty content roots automatically」にチェック。
+      - //？「Create directories for empty content roots automatically」にチェック。
       - 「Create separate module per source set」にチェック。
       - 「Use default gradle wrapper (recommended)」にチェック。
       - 上記以外はチェックを外す。
-      - Gradel JVM を java 1.8 に。
+      - Gradel JVM を java 9 に。
       - Next.
     - プロジェクト名
       - 特に変更不要であればそのまま。Finish.
+        - 初めて Gradle 使う場合、関連モジュールのダウンロード＆構成が始まるので暫く放置。
   - 設定確認。
     - FileメニューからProject Structures...を選択。
-      - src/main/javaをSourcesに「なっていることを確認」。
-      - src/test/javaをTestsに「なっていることを確認」。
+      - SourcesとTestsが2つに分かれて設定されているはず。
+        - src/main/javaをSourcesに「なっていることを確認」。
+        - src/test/javaをTestsに「なっていることを確認」。
       - 上記のとおりならそのまま閉じる.
         - 上記通りになっていないなら、プロジェクト作成時のオプションチェックが間違っている可能性あり。プロジェクト作成からやり直そう。
   - 通常の動作確認。
@@ -62,8 +64,10 @@ gradle -v
       - 実行できない場合、プロジェクト作成時のオプションがおかしい可能性あり。
   - gradleで jar ファイル作成の設定。
     - build.gradleを開く。
-      - sourceCompatibility を 1.8 に変更。
+      - sourceCompatibility を 9 に変更。
       - 最後尾に以下の記述を追加。atttributes内のパッケージ名は、自身のものに修正すること。
+        - 操作or編集途中で「Gradle projects need to be imported.」と聞かれる場合、「**Enable Auto-Import**」を選択。
+        - ここでは、実行するためのmainメソッドを含むクラスがどこにあるかを指定している。この設定をmanifestと呼んでいる。
 ```
 jar {
     manifest {
@@ -76,7 +80,7 @@ jar {
     - 方法その1: IntelliJからgradle実行。
       - Viewメニュー -> Tool Window -> Gradle を選択。
         - Tasks -> build -> jar をダブルクリック。
-          - ログ画面でビルドが動き、最後に「:jar」と出力されたら成功。
+          - ログ画面でビルドが動き、「Build succeeded」と出力されたら成功。
             - 確認事項1: 左側のファイル一覧パネルにて、build->libsを開き、そこに「プロジェクト名-1.0-SNAPSHOT.jar」が生成されているはず。
             - 確認事項2: この jar ファイルは、Example.javaをコンパイルしたものになっている。（そうなるようにbuild.gradleで設定した）。このjarファイルを動かすには、
               - case 1: IntelliJからは、このjarファイルを Ctrl+クリック し、Runを選択することで実行できる。
@@ -85,14 +89,17 @@ jar {
                 - 他の人に「ソースは見せたくないが、実行させたい」場合にはこの jar ファイルを渡せば良い。
     - 方法その2: ターミナルからgradle実行。
       - ターミナルで、今回作成したプロジェクトのディレクトリに移動。
+        - IntelliJで作成したプロジェクトは ``~/IdeaProjects/`` 以下に生成される。
+        - 今回のプロジェクト名が「GradleExample」なら、~/IdeaProjects/GradleExample/ に移動しよう。
       - build/libsの下に既に jarファイル があるはずなので、それを削除。e.g., ``rm build/libs/*.jar``
       - ターミナルで、プロジェクトのトップディレクトリにいることを確認。lsすると、build.gradleがある状態。
         - ここで ``gradle jar`` を実行。すると、先程IntelliJでgralde実行したときと同じログが出力され、jarファイルが生成されるはず。BUILD SUCCESSFULと出力されたら成功。
           - ここで気づいてほしいメリットは次の通り。
             - 実際にソースファイルを書いたファイルは、src/main/java/package/以下にある。
             - どこにあるかは気にせず、``gradle jar`` と実行するだけで指定されたファイルを探し出し、jarファイルを生成してくれている。
-        - build/libsに移動し、jarファイルが生成されてることを確認しよう。
-        - 確認できたら、「java -jar ファイル名.jar」で動作確認。
+        - ``ls build/libs`` で jarファイルが生成されていることを確認しよう。
+        - 確認できたら、``java -jar build/libs/ファイル名.jar``で動作確認。
+          - ファイル名はjarファイル。
 
 <hr>
 
@@ -122,8 +129,12 @@ jar {
 
 - ユニットテストの実行。
   - case 1: IntelliJからgradleで実行。
-    - Tasks -> testClasses をダブルクリック。
-      - 分かりにくいが、ログ画面にはビルド結果のみが出力されている。ログ画面の下に「Tests Failed: 0 passed, 1 failed」のようなテスト結果が出力されているはず。
+    - Tasks -> verification -> test をダブルクリック。
+      - 分かりにくいが、ログ画面にはビルド結果＆テスト結果が出力されている。ログ画面の途中に「1 test completed, 1 failed」のようなテスト結果が出力されているはず。
+        - 最後に「BUILD FAILED」とあるのは、コンパイルに失敗したという意味ではない。ここでは「テストのためにコンパイルして動作検証する」一連の処理を「ビルド」と呼んでいる。一連の処理のどこかで失敗したことを「BUILD FAILED」と表現している。
+    - ここで気づいてほしいメリットは次の通り。
+      - 実際にテストを書いたファイルは、src/test/java/package/以下にある。
+      - どこにあるかは気にせず、``gradle test`` と実行するだけでテスト関連ファイルを探し出し、動作検証してくれている。
   - case 2: ターミナルからgradle実行。
     - ターミナルで、今回作成したプロジェクトのディレクトリに移動。lsすると、build.gradleがある状態。
     - ``gradle test``を実行。すると、自動でコンパイルされ、ユニットテストの実行結果が出力されるはず。
