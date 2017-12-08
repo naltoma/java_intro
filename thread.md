@@ -7,7 +7,7 @@
 <hr>
 
 ## <a name="intro">Threadとは</a>
-- "A thread is a thread of execution in a program. **The Java Virtual Machine allows an application to have multiple threads of execution running concurrently**." by [java.lang.Thread](http://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html)
+- "A thread is a thread of execution in a program. **The Java Virtual Machine allows an application to have multiple threads of execution running concurrently**." by [java.lang.Thread](http://docs.oracle.com/javase/9/docs/api/java/lang/Thread.html)
   - ポイント: 同時に、複数のスレッド実行をアプリケーションに許可する。
 - 問題背景
   - 例えばこのテキストを参照しているブラウザ（恐らくSafari）は、以下のような多数の操作を受け付けている。
@@ -30,7 +30,7 @@
 <hr>
 
 ## <a name="howto">Threadの実装方法、コード例</a>
-- 山田先生の資料: [スレッドを作る方法](https://ie.u-ryukyu.ac.jp/~koji/pw/index.php?cmd=read&page=Programming_II%2F08%2F第13回#ucea891e)
+- 山田先生の資料: [スレッドを作る方法](https://ie.u-ryukyu.ac.jp/~koji/pw/index.php?cmd=read&page=Programming_II%2F08%2F第13回#ucea891e) ＊2016年度資料。
 - コード例: [ThreadExample](https://github.com/naltoma/ThreadExample)
   - NormalCount.java, ExecNormalCount.java: スレッド無しで、数をカウントする例。
   - ThreadCount.java, ExecThreadCount.java: Threadの拡張クラスとしてrun()メソッドを実装し、start()メソッドを呼び出す例。

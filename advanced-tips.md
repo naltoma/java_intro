@@ -4,7 +4,7 @@
   - <a href="#20.1">クラスメンバについて理解する（20.1節）</a>
   - <a href="#20.2">フィールドの隠蔽（20.2節）</a>　＊省略
   - <a href="#20.3">インタフェースの文法（20.3節）</a>　＊省略
-  - <a href="#20.1">配列の配列（20.4節）</a>
+  - <a href="#20.1">配列の配列（20.4節）</a>　＊省略
   - <a href="#20.5">ファイルとプログラムの実行（20.5節）</a>
 
 <hr>
@@ -18,7 +18,7 @@
           - staticメソッドはインスタンスメンバにアクセスできない
           - staticメソッドはthisを使えない
         - インスタンスメンバ（static付いていない変数とメソッド）は、new演算子でインスタンス生成されるまでは実体化されない。インスタンス生成する度に実体を作成していしているため、インスタンスごとに参照される実体が異なる。(many for each class)
-- staticメンバの例: [java.lang.Math](http://docs.oracle.com/javase/8/docs/api/java/lang/Math.html)
+- staticメンバの例: [java.lang.Math](http://docs.oracle.com/javase/9/docs/api/java/lang/Math.html)
   - Math.E や Math.PI といったstaticなフィールド変数は、Mathクラスのオブジェクトを生成しなくても利用できる。
     - 初めてMathクラス利用する際に、自動で実体化してくれる。
   - 同様に、Math.abs() といったstaticなメソッドも、Mathクラスのオブジェクトを生成しなくても利用できる。
