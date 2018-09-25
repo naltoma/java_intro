@@ -82,7 +82,7 @@ akanechan: 「茜ちゃん人形作って待ってるね！」
     - コンパイル方法: ``javac -d . SampleScanner.java``
     - 実行方法: ``java SampleScanner``
       - packageは指定していないので、ソースファイルがあるディレクトリにそのままクラスファイルが生成され、その場でパス指定なしに実行できる。
-- Scannerで読み込んだデータはString型になる。String型同士を比較して一致しているか否かを確認するには、[String.equals() メソッド](http://docs.oracle.com/javase/8/docs/api/java/lang/String.html#equals-java.lang.Object-)を用いよ。
+- Scannerで読み込んだデータはString型になる。String型同士を比較して一致しているか否かを確認するには、**String.equals()** メソッドを用いよ。
   - String型オブジェクトは、「== 演算子で比較してくれない」点に注意。
   - コード例: 前述の SampleScanner.java 参照。
 

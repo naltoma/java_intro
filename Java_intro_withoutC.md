@@ -173,9 +173,9 @@ public class ExampleAdd {
         - 「文字列+"="」で文字列結合に。
         - 「文字列+result」で文字列結合に。
 - **マニュアルの使い方**
-  - オンラインAPI: [Java® Platform, Standard Edition 9
-API Specification](http://docs.oracle.com/javase/9/docs/api/overview-summary.html)
+  - オンラインAPI: [JDK 10 Documentation](https://docs.oracle.com/javase/10/index.html)
   - System.out.println()メソッドについて調べてみよう。
+    - 左メニューの「API Documentation」を選択。
     - 試しに、右上の検索窓に「system」を入力。
       - systemを含む文字列が大量に列挙される。
     - この中から該当メソッドについて探すのは難しそうなので、続けて「system.out」まで入力してみよう。
@@ -191,7 +191,7 @@ API Specification](http://docs.oracle.com/javase/9/docs/api/overview-summary.htm
       - ここにSystem.outの概要と、outフィールドが持つ関連メソッドが列挙されている。
       - 今回の例だと、println()の中身は文字列（String型）となるため、「PrintStream.println(java.lang.String)」をクリック。
     - PrintStream.println(java.lang.String)
-      - 正しく参照できているなら「[public void println​(String x)のページ](http://docs.oracle.com/javase/9/docs/api/java/io/PrintStream.html#println-java.lang.String-)」が参照できているはず。
+      - 正しく参照できているなら「[public void println​(String x)のページ](https://docs.oracle.com/javase/10/docs/api/java/io/PrintStream.html#println(java.lang.String))」が参照できているはず。
       - これがSystem.out.println()の具体的な説明。
   - **Javaのドキュメントは、一つの機能に関する説明が様々なページに散らばっている。これを探して読み取れるようになろう。**
 
