@@ -38,7 +38,7 @@
 <hr>
 
 ## <a name="ex1_0">演習1_0: APIドキュメントの参照</a>
-- [APIドキュメント](http://docs.oracle.com/javase/9/docs/api/overview-summary.html)から、Stringクラスについて調べよ。
+- [APIドキュメント](https://docs.oracle.com/javase/10/docs/api/overview-summary.html)から、Stringクラスについて調べよ。
   - replace()メソッド、もしくはreplaceAll()メソッドについて調べ、その機能を説明せよ。（1~2行でOK）
   - 上記以外の任意のメソッド一つ以上について、その機能を説明せよ。（1~2行でOK）
 - 補足
@@ -82,8 +82,8 @@
 - ヒント
   - String型オブジェクトは配列とは異なる。
     - 「String sample = "hoge";」として用意した変数sampleに対して、「sample[0]」のようにインデックスを指定して参照することは出来ない。
-    - String型オブジェクトのままインデックス参照したいのであれば、[String.charAt(int index)](http://docs.oracle.com/javase/8/docs/api/java/lang/String.html#charAt-int-)を使おう。
-    - String型オブジェクトの長さを知りたいなら、[String.length()](http://docs.oracle.com/javase/8/docs/api/java/lang/String.html#length--)を使おう。メソッドのため、()付きで呼び出す必要がある点に注意。
+    - String型オブジェクトのままインデックス参照したいのであれば、[String.charAt(int index)](https://bit.ly/2xYaKpu)を使おう。
+    - String型オブジェクトの長さを知りたいなら、[String.length()](https://bit.ly/2xQiHhz)を使おう。メソッドのため、()付きで呼び出す必要がある点に注意。
       - charAt()もlength()も、これらを使えという指定ではありません。これらを使わない実装も可能です。
 - 提出方法
   - 完成版と実行結果をアップロードすること。
