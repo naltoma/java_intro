@@ -477,9 +477,9 @@ public class OriginalClass {
 
 ## <a name="ref">参考サイト</a>
 - 公式ドキュメント
-  - APIドキュメント: [Java® Platform, Standard Edition 9
-API Specification](http://docs.oracle.com/javase/9/docs/api/overview-summary.html)
-  - ドキュメント(言語仕様等): [Oracle JDK 9 Documentation](http://docs.oracle.com/javase/9/index.html)
+  - APIドキュメント: [Java® Platform, Standard Edition & Java Development Kit
+Version 10 API Specification](https://docs.oracle.com/javase/10/docs/api/overview-summary.html)
+  - ドキュメント(言語仕様等): [JDK 10 Documentation](https://docs.oracle.com/javase/10/index.html)
     - ダウンロードも可能。チュートリアルやサンプルコードも多数。
 - Java動画学習
   - [Progate: Java I, II](https://prog-8.com/languages/java)（初めてプログラミングする人向けの解説＋簡易問題のあるサイト。webサイト上で実行もできるので、一歩ずつ確認していきたい人には向いてます。）
