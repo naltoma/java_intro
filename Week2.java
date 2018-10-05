@@ -37,6 +37,9 @@ public class Week2 {
         char c = 'a';
         System.out.println((int)c);
 
+        //演習3-3
+        System.out.println((char)98);
+
         //演習4-1
         System.out.println("## 演習4-1");
         String[] text = {"This", "is", "test."};
