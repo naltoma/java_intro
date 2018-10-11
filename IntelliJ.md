@@ -18,8 +18,12 @@
     - Community Edition をダウンロード。
     - ダウンロード終了したら、解答して「アプリケーション (Applications)」フォルダにドラッグ＆ドロップしてインストール。
     - IntelliJ起動
-    - SDK (Software Development Kit)として「/Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home」のように、jdk-9 (Java 9)が選択されていることを確認。（デフォルトでそうなるはず）
-      - java8等の古いバージョンが選択されている人は、「New...」から上記パスを選択しよう。
+    - SDK (Software Development Kit)の確認。
+      - Create New Project をクリックし、新規プロジェクト作成画面に移行。
+      - 左パネルから「Java」を選択した状態で、右パネルの「Project SDK」を確認。ここで Java 10 以上になっていればOK。
+        - なっていない場合には、SDKの指定が必要。
+        - 右側の New... をクリックして、``/Library/Java/JavaVirtualMachines/`` 以下から JDK 10 を探して指定しよう。
+        - jdk-10.0.2なら、``/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home`` を選択し、Open。
 
 <hr>
 
@@ -33,8 +37,10 @@
   - 左側のメニューがファイル操作パネル。
     - プロジェクト名の左にある▶をクリックするとプロジェクト内のフォルダ・ファイル一覧を参照できる。
       - 「.idea」は、IDEAアプリで使う管理用のフォルダ。
-      - 「src」は、薄い水色になっているはず。ソース(source)を置く場所として設定されている。
+      - 「**src**」は、薄い水色になっているはず。ソース(source)を置く場所として設定されている。
       - 「.iml」拡張子imlは、Project Structureで設定した内容が保存されるらしい。
+      - 後で自動生成される「**out**」は、バイトコード等の自動生成されるファイルを置く場所。
+        - ターミナル上で「javac -d . ファイル名.java」とした場合と異なり、ソースコードやバイトコードを置く場所は「プロジェクトディレクトリからの相対パス」として設定されている。
 - ソースコードの作成
   - Hello World と出力するだけのアプリを作成してみる。
     - 「src」を右クリック（Ctrl+クリック）して、New から Java Class を選択。
