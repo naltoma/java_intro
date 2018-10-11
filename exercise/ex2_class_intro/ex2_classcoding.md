@@ -1,5 +1,5 @@
 # 演習2: クラス実装に慣れよう
-- 参考: (Beginner's Java: Test Your Knowledge of Classes and Objects)[https://www.caveofprogramming.com/java/beginners-java-test-your-knowledge-of-classes-and-objects.html]
+- 参考: [Beginner's Java: Test Your Knowledge of Classes and Objects](https://www.caveofprogramming.com/java/beginners-java-test-your-knowledge-of-classes-and-objects.html)
 
 ＜目次＞
 - 演習2: クラス実装に慣れよう
