@@ -77,8 +77,10 @@ Host github.com
   - 作業状況をセーブしたいタイミングで、その都度実行するステップ。
   - VCSメニューから「Git -> + Add」を選択。
     - 「Do you want to add the following file to Git?  /Users/tnal/IdeaProjects/ExampleUnitTest/.idea/vcs.xml」と聞かれるが、Noを選択。（IntelliJ専用のファイルなので、不要）
+    - 特に反応がない場合は、気にせず次（commit）に進もう。
   - VCSメニューから「Git -> Commit File...」を選択。
     - 登録したいファイル（通常はソースコードや関連ドキュメント）がすべて選択されていることを確認。
+      - 今回は、Hero, Enemy, Mainの3つのソースファイルを選択した状態にしよう。
     - 登録したいファイルを選択した状態で、commit message を記入し、「Commit」をクリック。
       - コミットメッセージは、ユニットテスト用の初期コードであることが分かるように書こう。
   - Code Analysis が起動するので、「Review」をクリック。

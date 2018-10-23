@@ -159,7 +159,8 @@ oct:tnal% cat ~/.gitconfig
     - Create New Test...を選択。
     - Testing Library を「Junit5」に指定。
       - JUnit5 library not found と言われる場合は「Fix」をクリック。
-        - 「Use 'JUnit5' from IntelliJ IDEA distribution」を選択。
+        - 「org.junit.jupiter:junit-jupiter-api:RELEASE」のままで検索が始まるなら暫く待つ。始まらないなら、虫眼鏡アイコンをクリックして検索。
+        - 検索が終わったら候補が選べる状態になるが、ここではデフォルトのまま（RELEASEのまま）にしておき、OKを選択。
     - Class name を EnemyTest にする。（デフォルトのまま）
       - **テストコードを記述するファイルは「クラス名＋Test」** にしよう。
     - Super class は、ないので空のまま。

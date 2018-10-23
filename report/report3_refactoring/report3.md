@@ -25,7 +25,7 @@
 
 ## <a name="details">詳細仕様</a>
 ### <a name="details_step0">ステップ0: コードの準備。</a>
-- IntelliJで新規プロジェクトを作成せよ。プロジェクト名は「Report3」とする。
+- IntelliJで新規プロジェクトを作成せよ。プロジェクト名は自由で良い（例えばReport3）。
 - [サンプルコードの準備](https://github.com/naltoma/java_intro/blob/master/IntelliJ%2BJUnit.md#pre)を参考に、Hero.java, Enemy.java, Main.java, EnemyTest.java の4つを適切に配置し、リソース設定せよ。
   - pacakge名は自身のものに修正すること。
 - Main.javaとEnemyTest.javaを実行し、動作することを確認できたら commit & pushせよ。
@@ -45,7 +45,7 @@
 - レポート報告事項
   - Enemy.attack()の差分コードを以下の手順で掲載し、どのように修正したのか解説せよ。
     - 差分コードの出力手順
-      - ターミナルでプロジェクトを保存しているディレクトリに移動する。（デフォルトなら ~/IdeaProjects/Report4/ 以下にあるはず）
+      - ターミナルでプロジェクトを保存しているディレクトリに移動する。（例の通りなら ~/IdeaProjects/Report3/ 以下にあるはず）
       - ``git log -p -1`` を実行し、直近1つのコミットでの変更点を出力させる。この実行結果全体をレポートに含めよう。（このコマンドの意味は[前期資料](https://github.com/naltoma/python_intro/blob/master/Git.md)で確認しよう。）
   - 想定: 数行の追加で終わるはず。
 
