@@ -1,11 +1,11 @@
-# 演習2: IntelliJ, Git, GitHubに慣れよう
+# 演習3: IntelliJ, Git, GitHubに慣れよう
 
 ＜目次＞
-- 演習2: IntelliJ, Git, GitHubに慣れよう
+- 演習3: IntelliJ, Git, GitHubに慣れよう
   - <a href="#howto">ペア・プログラミングの目的とやり方</a>
   - <a href="#goal">達成目標</a>
-  - <a href="#ex2_1">演習2_1: GitHubにペアプロ用リポジトリを用意しよう</a>
-  - <a href="#ex2_2">演習2_2: 共用リポジトリへ互いにcommit&pushしてみよう（mergeとconflicts解消の練習）</a>
+  - <a href="#ex3_1">演習3_1: GitHubにペアプロ用リポジトリを用意しよう</a>
+  - <a href="#ex3_2">演習3_2: 共用リポジトリへ互いにcommit&pushしてみよう（mergeとconflicts解消の練習）</a>
 
 <hr>
 
@@ -35,15 +35,15 @@
 
 <hr>
 
-## <a name="ex2_1">演習2_1: GitHubにペアプロ用リポジトリを用意しよう</a>
+## <a name="ex3_1">演習3_1: GitHubにペアプロ用リポジトリを用意しよう</a>
 - 誰か代表一人決め、[GitHub](https://github.com/)にログインし、ペアプロ用リポジトリを新規作成しよう。
-  - リポジトリ名: prog2-ex2
+  - リポジトリ名: prog2-ex3
   - publicにすること。
   - Settingsをクリックし、「Collaborators」をクリック。
   - パスワードを要求されるので、入力。
   - Add collaboratorの欄に、パートナーのGitHubのusernameを入力し、Add collaboratorをクリック。
     - 3人チームの場合は、パートナー2名とも入力しよう。
-    - 正しく入力できていれば、「xxx has invited you to collaborate on the yyy/prog2-ex2 repository」といったタイトルのメールが、パートナー側に届いているはず。
+    - 正しく入力できていれば、「xxx has invited you to collaborate on the yyy/prog2-ex3 repository」といったタイトルのメールが、パートナー側に届いているはず。
       - パートナーは、該当メールを開き、「View invitation」をクリック。
         - 続けて、「Accept invitaion」をクリック。
         - これで、複数人でcommit&pushできる、共用リポジトリを準備できたはず。
@@ -52,22 +52,22 @@
 
 <hr>
 
-## <a name="ex2_2">演習2_2: 共用リポジトリへ互いにcommit&pushしてみよう（mergeとconflicts解消の練習）</a>
-- **演習2_1の代表者から以下の作業を始めること。**
+## <a name="ex3_2">演習3_2: 共用リポジトリへ互いにcommit&pushしてみよう（mergeとconflicts解消の練習）</a>
+- **演習3_1の代表者から以下の作業を始めること。**
   - IntelliJを起動し、開いてる作業ウィンドウを閉じる。
   - Check out from Version Control をクリックし、Gitを選択。
-    - Git Repository URL に、演習2_1で用意した作業用URLを貼り付ける。
+    - Git Repository URL に、演習3_1で用意した作業用URLを貼り付ける。
     - Testして問題なければ Clone する。Yes。
     - NextしていってFinish。これで IntelliJ のプロジェクトとして用意できたはずだ。
-  - 左側のプロジェクト一覧から「prog2-ex2」を選び、Ctrl+クリック。
+  - 左側のプロジェクト一覧から「prog2-ex3」を選び、Ctrl+クリック。
     - New -> File と選び、ファイル名を「README.md」としてOK。
     - Git管理下に置くか聞かれるので Yes。
-  - 作成した README.md に、次を入力。 ``# プログラミング2の演習2の練習中``
+  - 作成した README.md に、次を入力。 ``# プログラミング2の演習3の練習中``
   - README.md を add し、commit & push しよう。（これで一人目の commit&pushを終了）
 - **ペア番**
   - IntelliJを起動し、開いてる作業ウィンドウを閉じる。
   - Check out from Version Control をクリックし、Gitを選択。
-    - Git Repository URL に、演習2_1で用意した作業用URLを貼り付ける。
+    - Git Repository URL に、演習3_1で用意した作業用URLを貼り付ける。
     - Testして問題なければ Clone する。Yes。
     - NextしていってFinish。これで IntelliJ のプロジェクトとして用意できたはずだ。
     - 最初に作成した時点ではリポジトリが空だったはずだが、二人目からは最初に登録された README.md が登録済みのはずである。
