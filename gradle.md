@@ -72,11 +72,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
 }
 ```
-
-      - 最後尾に以下の記述を追加。atttributes内のパッケージ名は、自身のものに修正すること。
-        - **test** ブロックは、gradleでテストする際にJUnitを使うことを指定している。
-        - **jar** ブロックは、gradleでjarファイルを生成する際の指定を記述している。
-          - ここでは、実行するためのmainメソッドを含むクラスがどこにあるかを指定している。この設定をmanifestと呼んでいる。
+    - 最後尾に以下の記述を追加。atttributes内のパッケージ名は、自身のものに修正すること。
+      - **test** ブロックは、gradleでテストする際にJUnitを使うことを指定している。
+      - **jar** ブロックは、gradleでjarファイルを生成する際の指定を記述している。
+        - ここでは、実行するためのmainメソッドを含むクラスがどこにあるかを指定している。この設定をmanifestと呼んでいる。
 ```
 test {
     useJUnitPlatform()
