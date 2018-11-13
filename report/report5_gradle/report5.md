@@ -31,6 +31,7 @@
     - LivingThing.java, Enemy.java, Hero.java, Main.java
   - src/test/java/package名/以下に置くべきファイル
     - EnemyTest.java
+      - JUnit5パッケージを追加するため、Enemyクラスを開いた状態で、「Go to から create new test」を選択した方がベター。
   - 補足: **課題レポート3を終えてない人は、まずそれを終えよう**。
 - 動作確認。
   - Main.javaが動作することを確認しよう。
@@ -48,7 +49,7 @@
 - 仕様
   - build.gradleを編集し、jarファイルを生成するように設定せよ。
     - 条件1: mainメソッドを含むMain.javaをコンパイルするように設定すること。
-    - 条件2: sourceCompatibilityを9にすること。
+    - 条件2: sourceCompatibilityを10にすること。
 - 動作確認
   - IntelliJからでも、ターミナルからでもどちらでも構わないので、gradleを使ってjarファイルが生成できることを確認しよう。
   - jarファイル生成できたら、jarファイルを実行しよう。この出力結果がMainクラスと同等であることを確認しよう。
