@@ -43,7 +43,7 @@ gradle -v
       - 「Create separate module per source set」にチェック。
       - 「Use default gradle wrapper (recommended)」にチェック。
       - 上記以外はチェックを外す。
-      - Gradel JVM を java 9 に。
+      - Gradel JVM を java 10 に。
       - Next.
     - プロジェクト名
       - 特に変更不要であればそのまま。Finish.
@@ -63,11 +63,26 @@ gradle -v
       - 実行できない場合、プロジェクト作成時のオプションがおかしい可能性あり。
   - gradleで jar ファイル作成の設定。
     - build.gradleを開く。
-      - sourceCompatibility を 9 に変更。
-      - 最後尾に以下の記述を追加。atttributes内のパッケージ名は、自身のものに修正すること。
+      - sourceCompatibility を 10 に変更。
         - 操作or編集途中で「Gradle projects need to be imported.」と聞かれる場合、「**Enable Auto-Import**」を選択。
-        - ここでは、実行するためのmainメソッドを含むクラスがどこにあるかを指定している。この設定をmanifestと呼んでいる。
+      - **dependencies** ブロックを削除し、以下に変更。コンパイル時の外部パッケージを指定している。
 ```
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+}
+```
+
+      - 最後尾に以下の記述を追加。atttributes内のパッケージ名は、自身のものに修正すること。
+        - **test** ブロックは、gradleでテストする際にJUnitを使うことを指定している。
+        - **jar** ブロックは、gradleでjarファイルを生成する際の指定を記述している。
+          - ここでは、実行するためのmainメソッドを含むクラスがどこにあるかを指定している。この設定をmanifestと呼んでいる。
+```
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+}
+
 jar {
     manifest {
         attributes  "Main-Class": "jp.ac.uryukyu.ie.tnal.Example"
