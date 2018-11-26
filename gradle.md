@@ -113,6 +113,9 @@ jar {
         - ``ls build/libs`` で jarファイルが生成されていることを確認しよう。
         - 確認できたら、``java -jar build/libs/ファイル名.jar``で動作確認。
           - ファイル名はjarファイル。
+- ここで気づいてほしいメリットは次の通り。
+  - 実際にコードを書いたファイルは、src/main/java/package/ 以下にある。
+  - どこにあるかは気にせず、``gradle jar`` と実行するだけで、JVMから実行可能な中間ファイルを生成してくれている。
 
 <hr>
 
@@ -131,12 +134,13 @@ jar {
     - Go to -> Test -> Create New Test... を選択。
     - 「Generate test methods for」から add(a:int, b:int):int にチェックを入れ、OK．
       - 自動で src/test/java/パッケージ名/ExampleTest.java が生成されるはず。
-        - 「public void add() throws Exception」を次のように修正。
+        - ExampleTest.add() を次のように修正。
 
 ```
     @Test
-    public void testAdd() {
-        assertEquals(3, Example.add(1, 2));
+    void testAdd() {
+        Example exam = new Example();
+        assertEquals(3, exam.add(1, 2));
     }
 ```
 
@@ -151,9 +155,9 @@ jar {
   - case 2: ターミナルからgradle実行。
     - ターミナルで、今回作成したプロジェクトのディレクトリに移動。lsすると、build.gradleがある状態。
     - ``gradle test``を実行。すると、自動でコンパイルされ、ユニットテストの実行結果が出力されるはず。
-      - ここで気づいてほしいメリットは次の通り。
-        - 実際にユニットテストを書いたファイルは、src/test/java/package/ 以下にある。
-        - どこにあるかは気にせず、``gradle test`` と実行するだけでそのファイルを実行してくれている。
+  - ここで気づいてほしいメリットは次の通り。
+    - 実際にユニットテストを書いたファイルは、src/test/java/package/ 以下にある。
+    - どこにあるかは気にせず、``gradle test`` と実行するだけでそのファイルを実行してくれている。
 
 <hr>
 
