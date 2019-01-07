@@ -102,6 +102,8 @@ public class ThreadExample {
 - Step 2-1: レジスタッフクラスの用意。
 
 ```Java
+import java.util.ArrayList;
+
 /**
  * レジスタッフクラス。
  * コンストラクタで受け取った顧客（customers）が空になるまで処理し続ける。
@@ -233,6 +235,10 @@ if (customers.isEmpty() == true) { //空になった場合
 
 - Step5の動作確認。
   - 何度実行し直しても、全顧客を正しく処理（モニタ処理）し終え、レジスタッフによる会計処理の終了を待ち（Thread.join）、メインスレッドにて動作確認用の出力が最後に出力されるようになっているはず。
+  - だが、これでも不十分な場合がある。何度か実行してみると、顧客列が途切れているにも関わらずArrayList.removeしてしまうことがある。
+    - これは、(1)if文で空ではないことを確認して、(2)synchronized処理する、という(1)〜(2)の間に別スレッドが処理してしまい、空になった状態で customers.remove() しようとすることがあるからである。
+    - このため、synchronizedする範囲や、タイミングに注意が必要。具体的にどう解決したら良いかは、個々人で検討してみよう。
+    - 知能情報コースとしては[オペレーティングシステム](https://ie.u-ryukyu.ac.jp/syllabus/2017/late/601053002.html)や[並列分散処理](https://ie.u-ryukyu.ac.jp/syllabus/2018/early/601548001.html)あたりで学びます。
 
 <hr>
 
