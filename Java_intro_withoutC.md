@@ -173,14 +173,14 @@ public class ExampleAdd {
         - 「文字列+"="」で文字列結合に。
         - 「文字列+result」で文字列結合に。
 - **マニュアルの使い方**
-  - オンラインAPI: [JDK 10 Documentation](https://docs.oracle.com/javase/10/index.html)
+  - オンラインAPI: [Java SE 12 & JDK 12 API Documentation](https://docs.oracle.com/en/java/javase/12/docs/api/index.html)
   - System.out.println()メソッドについて調べてみよう。
     - 左メニューの「API Documentation」を選択。
     - 試しに、右上の検索窓に「system」を入力。
       - systemを含む文字列が大量に列挙される。
     - この中から該当メソッドについて探すのは難しそうなので、続けて「system.out」まで入力してみよう。
       - 「java.out.System.out」だけが残るので、このページを選択してみよう。
-      - この時点で [public static final PrintStream out](http://docs.oracle.com/javase/9/docs/api/java/lang/System.html#out) のページが参照できるはず。
+      - この時点で [public static final PrintStream out](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/lang/System.html#out) のページが参照できるはず。
     - 調べているものは「System.out.println()」だが、見つかったのは「public static final PrintStream out」とかいう謎のページだ。だが、このページ内には「System.out.println(data)」とも書かれている。
       - この良くわからない状況を俯瞰するため、このページのトップに遡ってみよう。
     - **Class System（Systemクラス）**
@@ -191,7 +191,7 @@ public class ExampleAdd {
       - ここにSystem.outの概要と、outフィールドが持つ関連メソッドが列挙されている。
       - 今回の例だと、println()の中身は文字列（String型）となるため、「PrintStream.println(java.lang.String)」をクリック。
     - PrintStream.println(java.lang.String)
-      - 正しく参照できているなら「[public void println​(String x)のページ](https://docs.oracle.com/javase/10/docs/api/java/io/PrintStream.html#println(java.lang.String))」が参照できているはず。
+      - 正しく参照できているなら「[public void println​(String x)のページ](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/io/PrintStream.html#println\(java.lang.String\))」が参照できているはず。
       - これがSystem.out.println()の具体的な説明。
   - **Javaのドキュメントは、一つの機能に関する説明が様々なページに散らばっている。これを探して読み取れるようになろう。**
 
@@ -477,14 +477,12 @@ public class OriginalClass {
 
 ## <a name="ref">参考サイト</a>
 - 公式ドキュメント
-  - APIドキュメント: [Java® Platform, Standard Edition & Java Development Kit
-Version 10 API Specification](https://docs.oracle.com/javase/10/docs/api/overview-summary.html)
-  - ドキュメント(言語仕様等): [JDK 10 Documentation](https://docs.oracle.com/javase/10/index.html)
+  - APIドキュメント: [Java SE 12 & JDK 12 API Documentation](https://docs.oracle.com/en/java/javase/12/docs/api/index.html)
+    - ドキュメント(言語仕様等): [JDK 12 Documentation](https://docs.oracle.com/en/java/javase/12/)
     - ダウンロードも可能。チュートリアルやサンプルコードも多数。
 - Java動画学習
   - [Progate: Java I, II](https://prog-8.com/languages/java)（初めてプログラミングする人向けの解説＋簡易問題のあるサイト。webサイト上で実行もできるので、一歩ずつ確認していきたい人には向いてます。）
   - [paiza動画学習: Java入門編](https://paiza.jp/works/java/primer)（初めてプログラミングする人向けの動画講義。1つのコンテンツは数分程度に細分化されてて、かつ、コードを自動採点するシステムが提供されています。独習の進め方としては「数分動画閲覧して、自動採点される課題に取り組む」を繰り返すことになります。）
-  - [ドットインストール: Java 8入門 (全43回)](http://dotinstall.com/lessons/basic_java_v2)（paiza同様、1つのコンテンツが数分程度の動画に細分化されて提供されてます。）
 - 課題例
   - [CodingBat](http://codingbat.com/)（課題が多数例示されています。サイト上でコードの動作確認をすることも可能。）
   - [言語処理100本ノック 2015](http://www.cl.ecei.tohoku.ac.jp/nlp100/)（特定分野に偏っていますが、課題が難易度別に提供されてます。UNIX思想も含まれてます。）
