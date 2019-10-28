@@ -35,7 +35,8 @@
   - ファイルの準備
     - IntelliJで適当なGradleプロジェクトを用意。
     - プロジェクト内の src/main/java の中にパッケージを追加。今回は「jp.ac.uryukyu.ie.tnal」。
-    - 上記パッケージ内に、TicTacToe.java, Main.Java をコピペ保存する。
+    - 上記パッケージ内に、TicTacToe.java をコピペ保存する。
+    - src/main/java 直下に Main.Java をコピペ保存する。パッケージ内ではない点に注意。
   - ただの実行
     - Main.java を実行。
   - ドキュメント生成の手順
