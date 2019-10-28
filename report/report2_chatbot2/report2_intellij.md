@@ -108,8 +108,11 @@
     - コンストラクタはとりあえず空のままでも良い。
     - searchPatternメソッドは、戻り値がint型である。何でも良いが、ここでは ``0`` を返すように1行追加しよう。
   - Step 1-2: コンパイル＆動作確認。
-    - 左パネルでMain.javaにカーソルを合わせ、Ctrl+クリックしてメニューを出す。そこから Run を選択。未編集のままだとコンパイルエラーになるはず。
-    - これは想定通りのエラー。Chatbot.patterns.pattern には「greeting, other, bye.」の応答パターンが登録されている必要があるが、これらがまだ登録されていないために出たエラー。
+    - 左パネルでMain.javaにカーソルを合わせ、Ctrl+クリックしてメニューを出す。そこから Run を選択。未編集のままだとコンパイルエラー（下記参照）になるはず。
+      - ここで異なるエラー、例えばJavaのバージョンに関するエラーが出た場合。（例えば ``「Error:java: ソース・オプション1.3は現在サポートされていません。6以降を使用してください。」`` ）、Javaコンパイラを下記手順で設定しよう。
+        - Fileメニューから「Project Structure」を選択。
+        - Projectを選んだ状態で、「Project SDK」と「Project language level」を、自身の環境に合わせて選択。2019年度なら 12 想定。
+    - NullPointerExceptionなら想定通りのエラー。Chatbot.patterns.pattern には「greeting, other, bye.」の応答パターンが登録されている必要があるが、これらがまだ登録されていないために出たエラー。
 ```java
 oct:tnal% java Main
 Exception in thread "main" java.lang.NullPointerException

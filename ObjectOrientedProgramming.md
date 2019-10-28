@@ -32,36 +32,24 @@
     - **board, turn を直接編集するメソッドは提供していない。実装を隠蔽している**（実装を気にせず利用できるように、機能をメソッドとして提供している）。
 - [Main.java](./TicTacToe/Main.java) // ゲームをプレイするmain()メソッドを含むクラス。
 - プログラム等のダウンロード、コンパイル、実行手順
-
-```
-# リポジトリの複製（ダウンロード）
-git clone https://github.com/naltoma/java_intro.git
-cd java_intro/TicTacToe
-
-# コンパイル
-## ここでは2つのソースファイルがある。
-## 個別にコンパイルしても良いが、ここではまとめて「.java拡張子のファイル」を指定している。
-javac -d . *.java
-
-# 実行
-## package名を変更したら、実行時のパスが変わることに注意。
-## ここでは変更・修正せずにコンパイル・実行している。
-java jp.ac.uryukyu.tnal.Main
-
-# Javadocによるドキュメント生成
-## オプションの「-d apidoc」は、「apidocフォルダを作成し、そこにドキュメントを保存する」。
-## Java 8以下の場合「-charset "UTF-8"」オプションも付ける必要あり。
-## Java 9からはデフォルトがUTF-8になったため、省略している。
-## 他にどんなオプションがあるのかは「javadoc --help」で確認しよう。
-## 「--help」オプションは、多くのオープンソース・ソフトウェア(OSS)で共通するオプション。
-javadoc -private -d apidoc *.java
-
-# ドキュメントをブラウザで参照する
-open apidoc/index.html
-```
+  - ファイルの準備
+    - IntelliJで適当なGradleプロジェクトを用意。
+    - プロジェクト内の src/main/java の中にパッケージを追加。今回は「jp.ac.uryukyu.ie.tnal」。
+    - 上記パッケージ内に、TicTacToe.java, Main.Java をコピペ保存する。
+  - ただの実行
+    - Main.java を実行。
+  - ドキュメント生成の手順
+    - ドキュメントの保存場所を用意。
+      - プロジェクト内に docs フォルダを作成。
+    - IntelliJのメニュー「Tools」から、「Generate JavaDoc」を選択。
+    - 中段にある「Output dicrectory:」の右側で、先程用意したプロジェクト内のdocsを選択。
+    - 「OK」をクリック。
+  - ドキュメントの参照手順
+    - 一度生成したドキュメントは全て docs フォルダに保存されている。このフォルダ内の ``index.html`` をブラウザで開けばいつでも閲覧できる。例えばプロジェクトが ``~/IdeaProjects/week4/`` に保存されているならば、そこに移動して open コマンドで開けば参照できる。
+    - 誰かに提供したいなら、HTMLファイル単体ではなくこのフォルダ全体を渡そう。CSS等も使われているため。
 
 ### <a name="code_javadoc">ドキュメント例</a>
-- 上記コード TicTacToe.java, Main.java をダウンロードし、下記手順でAPIドキュメントを生成してみよう。
+- 上記では IntelliJ 上でドキュメント生成したが、ターミナル上からも生成できる。
   - ドキュメント生成方法
     - ``javadoc -private -d apidoc *.java``
     - オプション説明
