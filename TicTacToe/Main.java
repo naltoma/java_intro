@@ -1,5 +1,3 @@
-package jp.ac.uryukyu.ie.tnal;
-
 public class Main {
     public static void main(String[] argc) {
 	TicTacToe ttt = new TicTacToe();
