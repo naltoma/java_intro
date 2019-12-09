@@ -27,7 +27,9 @@
 brew install gradle
 rehash
 gradle -v
-# -> Gradle のバージョンが出力されたらok（2017年11月現在では Gradle 4.3.1）
+# -> Gradle のバージョンが出力されたらok
+# 2019年12月現在では Gradle 6.0.1
+# Gradle 5.x以降なら大丈夫かも（？）
 ```
 
 <hr>
@@ -39,7 +41,7 @@ gradle -v
   - Gradle Project の作成。
     - IntelliJ で新規プロジェクト作成。作成時に「Gradle」を選択。Additional Libraries にJavaが含まれていることを確認。Next.
     - GroupID/ArtifactId を GradleExample に。Next.
-    - オプション設定
+    - オプション設定（Gradle 6ではこの設定は出てこない）
       - 「Create separate module per source set」にチェック。
       - 「Use default gradle wrapper (recommended)」にチェック。
       - 上記以外はチェックを外す。
@@ -68,14 +70,15 @@ gradle -v
       - **dependencies** ブロックを削除し、以下に変更。コンパイル時の外部パッケージを指定している。
 ```
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
 }
 ```
-    - 最後尾に以下の記述を追加。atttributes内のパッケージ名は、自身のものに修正すること。
-      - **test** ブロックは、gradleでテストする際にJUnitを使うことを指定している。
-      - **jar** ブロックは、gradleでjarファイルを生成する際の指定を記述している。
-        - ここでは、実行するためのmainメソッドを含むクラスがどこにあるかを指定している。この設定をmanifestと呼んでいる。
+
+- 最後尾に以下の記述を追加。atttributes内のパッケージ名は、自身のものに修正すること。
+  - **test** ブロックは、gradleでテストする際にJUnitを使うことを指定している。
+  - **jar** ブロックは、gradleでjarファイルを生成する際の指定を記述している。
+    - ここでは、実行するためのmainメソッドを含むクラスがどこにあるかを指定している。この設定をmanifestと呼んでいる。
 ```
 test {
     useJUnitPlatform()
@@ -85,34 +88,34 @@ test {
 jar {
     manifest {
         attributes  "Main-Class": "jp.ac.uryukyu.ie.tnal.Example"
-        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
     }
 }
 ```
-  - gradleでjarファイル作成。
-    - 方法その1: IntelliJからgradle実行。
-      - Viewメニュー -> Tool Window -> Gradle を選択。
-        - Tasks -> build -> jar をダブルクリック。
-          - ログ画面でビルドが動き、「Build succeeded」と出力されたら成功。
-            - 確認事項1: 左側のファイル一覧パネルにて、build->libsを開き、そこに「プロジェクト名-1.0-SNAPSHOT.jar」が生成されているはず。
-            - 確認事項2: この jar ファイルは、Example.javaをコンパイルしたものになっている。（そうなるようにbuild.gradleで設定した）。このjarファイルを動かすには、
-              - case 1: IntelliJからは、このjarファイルを Ctrl+クリック し、Runを選択することで実行できる。
-              - case 2: ターミナルでこのjarファイルがある場所に移動しよう。~/IdeaProjects/ 以下にあるはず。
-                - jarファイルがある場所に移動したら「java -jar ファイル名.jar」を実行してみよう。これで実行できるはず。
-                - 他の人に「ソースは見せたくないが、実行させたい」場合にはこの jar ファイルを渡せば良い。
-    - 方法その2: ターミナルからgradle実行。
-      - ターミナルで、今回作成したプロジェクトのディレクトリに移動。
-        - IntelliJで作成したプロジェクトは ``~/IdeaProjects/`` 以下に生成される。
-        - 今回のプロジェクト名が「GradleExample」なら、~/IdeaProjects/GradleExample/ に移動しよう。
-      - build/libsの下に既に jarファイル があるはずなので、それを削除。e.g., ``rm build/libs/*.jar``
-      - ターミナルで、プロジェクトのトップディレクトリにいることを確認。lsすると、build.gradleがある状態。
-        - ここで ``gradle jar`` を実行。すると、先程IntelliJでgralde実行したときと同じログが出力され、jarファイルが生成されるはず。BUILD SUCCESSFULと出力されたら成功。
-          - ここで気づいてほしいメリットは次の通り。
-            - 実際にソースファイルを書いたファイルは、src/main/java/package/以下にある。
-            - どこにあるかは気にせず、``gradle jar`` と実行するだけで指定されたファイルを探し出し、jarファイルを生成してくれている。
-        - ``ls build/libs`` で jarファイルが生成されていることを確認しよう。
-        - 確認できたら、``java -jar build/libs/ファイル名.jar``で動作確認。
-          - ファイル名はjarファイル。
+
+- gradleでjarファイル作成。
+  - 方法その1: IntelliJからgradle実行。
+    - Viewメニュー -> Tool Window -> Gradle を選択。
+      - Tasks -> build -> jar をダブルクリック。
+        - ログ画面でビルドが動き、「Build succeeded」と出力されたら成功。
+          - 確認事項1: 左側のファイル一覧パネルにて、build->libsを開き、そこに「プロジェクト名-1.0-SNAPSHOT.jar」が生成されているはず。
+          - 確認事項2: この jar ファイルは、Example.javaをコンパイルしたものになっている。（そうなるようにbuild.gradleで設定した）。このjarファイルを動かすには、
+            - case 1: IntelliJからは、このjarファイルを Ctrl+クリック し、Runを選択することで実行できる。
+            - case 2: ターミナルでこのjarファイルがある場所に移動しよう。~/IdeaProjects/ 以下にあるはず。
+              - jarファイルがある場所に移動したら「java -jar ファイル名.jar」を実行してみよう。これで実行できるはず。
+              - 他の人に「ソースは見せたくないが、実行させたい」場合にはこの jar ファイルを渡せば良い。
+  - 方法その2: ターミナルからgradle実行。
+    - ターミナルで、今回作成したプロジェクトのディレクトリに移動。
+      - IntelliJで作成したプロジェクトは ``~/IdeaProjects/`` 以下に生成される。
+      - 今回のプロジェクト名が「GradleExample」なら、~/IdeaProjects/GradleExample/ に移動しよう。
+    - build/libsの下に既に jarファイル があるはずなので、それを削除。e.g., ``rm build/libs/*.jar``
+    - ターミナルで、プロジェクトのトップディレクトリにいることを確認。lsすると、build.gradleがある状態。
+      - ここで ``gradle jar`` を実行。すると、先程IntelliJでgralde実行したときと同じログが出力され、jarファイルが生成されるはず。BUILD SUCCESSFULと出力されたら成功。
+        - ここで気づいてほしいメリットは次の通り。
+          - 実際にソースファイルを書いたファイルは、src/main/java/package/以下にある。
+          - どこにあるかは気にせず、``gradle jar`` と実行するだけで指定されたファイルを探し出し、jarファイルを生成してくれている。
+      - ``ls build/libs`` で jarファイルが生成されていることを確認しよう。
+      - 確認できたら、``java -jar build/libs/ファイル名.jar``で動作確認。
+        - ファイル名はjarファイル。
 - ここで気づいてほしいメリットは次の通り。
   - 実際にコードを書いたファイルは、src/main/java/package/ 以下にある。
   - どこにあるかは気にせず、``gradle jar`` と実行するだけで、JVMから実行可能な中間ファイルを生成してくれている。
